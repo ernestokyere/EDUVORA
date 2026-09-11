@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Eduvora — Learn, practice and level up with a smarter learning experience."
+    >
+
+    <meta
+        name="theme-color"
+        content="#155EEF"
+    >
+
+    <title>Eduvora — Learn. Practice. Level Up.</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<header class="navbar">
+
+    <div class="container nav-container">
+
+        <a href="#home" class="logo">
+
+            <span class="logo-icon">E</span>
+
+            <span class="logo-text">
+                Eduvora
+            </span>
+
+        </a>
+
+
+        <nav class="desktop-nav">
+
+            <a href="#home">Home</a>
+
+            <a href="#levels">Learn</a>
+
+            <a href="#quiz">Quiz Arena</a>
+
+            <a href="#tools">Study Tools</a>
+
+            <a href="#premium">Premium</a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <button
+                class="login-btn"
+                type="button"
+            >
+                Log in
+            </button>
+
+
+            <button
+                class="nav-start-btn"
+                type="button"
+                onclick="openLevelModal()"
+            >
+                Start Learning
+            </button>
+
+        </div>
+
+
+        <button
+            class="menu-btn"
+            type="button"
+            onclick="toggleMenu()"
+            aria-label="Open navigation"
+        >
+            ☰
+        </button>
+
+    </div>
+
+
+    <!-- MOBILE MENU -->
+
+    <div
+        class="mobile-menu"
+        id="mobileMenu"
+    >
+
+        <a
+            href="#home"
+            onclick="closeMenu()"
+        >
+            Home
+        </a>
+
+        <a
+            href="#levels"
+            onclick="closeMenu()"
+        >
+            Learn
+        </a>
+
+        <a
+            href="#quiz"
+            onclick="closeMenu()"
+        >
+            Quiz Arena
+        </a>
+
+        <a
+            href="#tools"
+            onclick="closeMenu()"
+        >
+            Study Tools
+        </a>
+
+        <a
+            href="#premium"
+            onclick="closeMenu()"
+        >
+            Premium
+        </a>
+
+
+        <button
+            class="mobile-start"
+            type="button"
+            onclick="openLevelModal(); closeMenu()"
+        >
+            Start Learning
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<main>
+
+<section
+    class="hero"
+    id="home"
+>
+
+    <div class="hero-glow"></div>
+
+
+    <div class="container hero-grid">
+
+        <!-- HERO CONTENT -->
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+
+                <span>✦</span>
+
+                A smarter way to learn
+
+            </div>
+
+
+            <h1>
+
+                Learn smarter.
+                <span>Level up.</span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                Eduvora brings lessons, practice,
+                quizzes and progress tracking together
+                to help students become better learners.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <button
+                    class="primary-btn"
+                    type="button"
+                    onclick="openLevelModal()"
+                >
+
+                    Start Learning
+
+                    <span>→</span>
+
+                </button>
+
+
+                <a
+                    href="#features"
+                    class="secondary-btn"
+                >
+
+                    Explore Features
+
+                </a>
+
+            </div>
+
+
+            <div class="hero-note">
+
+                <span>✓</span>
+
+                Built for students. Designed for growth.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- DASHBOARD PREVIEW -->
+
+        <div class="hero-dashboard">
+
+            <div class="dashboard-card">
+
+
+                <!-- TOP BAR -->
+
+                <div class="dashboard-top">
+
+                    <div class="window-dots">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                    <span>
+                        Student Dashboard
+                    </span>
+
+                </div>
+
+
+
+                <!-- DASHBOARD CONTENT -->
+
+                <div class="dashboard-content">
+
+
+                    <div class="dashboard-welcome">
+
+                        <div>
+
+                            <small>
+                                WELCOME BACK 👋
+                            </small>
+
+                            <h3>
+                                Ready to learn?
+                            </h3>
+
+                        </div>
+
+
+                        <div class="student-avatar">
+                            🎓
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STATS -->
+
+                    <div class="dashboard-stats">
+
+
+                        <div class="stat">
+
+                            <div class="stat-icon xp">
+                                ⚡
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    2,450
+                                </strong>
+
+                                <small>
+                                    XP Points
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <div class="stat-icon streak">
+                                🔥
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    7 Days
+                                </strong>
+
+                                <small>
+                                    Study Streak
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <div class="stat-icon level">
+                                🏆
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Level 8
+                                </strong>
+
+                                <small>
+                                    Explorer
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PROGRESS -->
+
+                    <div class="progress-card">
+
+                        <div class="progress-heading">
+
+                            <div>
+
+                                <strong>
+                                    Learning Progress
+                                </strong>
+
+                                <small>
+                                    This week's activity
+                                </small>
+
+                            </div>
+
+                            <b>
+                                72%
+                            </b>
+
+                        </div>
+
+
+                        <div class="progress-track">
+
+                            <div class="progress-fill"></div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- CONTINUE LEARNING -->
+
+                    <div class="continue-learning">
+
+                        <strong class="continue-title">
+                            Continue Learning
+                        </strong>
+
+
+                        <div class="lesson-row">
+
+                            <div class="lesson-icon physics">
+                                ⚛
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Physics
+                                </strong>
+
+                                <small>
+                                    Motion & Forces
+                                </small>
+
+                            </div>
+
+                            <span>
+                                →
+                            </span>
+
+                        </div>
+
+
+                        <div class="lesson-row">
+
+                            <div class="lesson-icon chemistry">
+                                ⚗
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Chemistry
+                                </strong>
+
+                                <small>
+                                    Atomic Structure
+                                </small>
+
+                            </div>
+
+                            <span>
+                                →
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     EDUCATION LEVELS
+========================================= -->
+
+<section
+    class="levels-section"
+    id="levels"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                EDUCATION LEVELS
+            </span>
+
+            <h2>
+                Learning that fits
+                <span>your level.</span>
+            </h2>
+
+            <p>
+                Select your education level and
+                start building your knowledge.
+            </p>
+
+        </div>
+
+
+
+        <div class="levels-grid">
+
+
+            <!-- BASIC -->
+
+            <article class="level-card">
+
+                <div class="level-icon basic-icon">
+                    📘
+                </div>
+
+                <span class="level-number">
+                    LEVEL 01
+                </span>
+
+                <h3>
+                    Basic School
+                </h3>
+
+                <p>
+                    Build strong foundations across
+                    essential school subjects.
+                </p>
+
+                <button
+                    type="button"
+                    onclick="selectLevel('Basic School')"
+                >
+                    Explore
+                    <span>→</span>
+                </button>
+
+            </article>
+
+
+
+            <!-- JHS -->
+
+            <article class="level-card">
+
+                <div class="level-icon jhs-icon">
+                    🎓
+                </div>
+
+                <span class="level-number">
+                    LEVEL 02
+                </span>
+
+                <h3>
+                    JHS
+                </h3>
+
+                <p>
+                    Strengthen your knowledge and
+                    prepare for important examinations.
+                </p>
+
+                <button
+                    type="button"
+                    onclick="selectLevel('JHS')"
+                >
+                    Explore
+                    <span>→</span>
+                </button>
+
+            </article>
+
+
+
+            <!-- SHS -->
+
+            <article class="level-card featured-level">
+
+                <div class="popular-label">
+                    MOST POPULAR
+                </div>
+
+                <div class="level-icon shs-icon">
+                    🔬
+                </div>
+
+                <span class="level-number">
+                    LEVEL 03
+                </span>
+
+                <h3>
+                    SHS / SHTS
+                </h3>
+
+                <p>
+                    Master advanced subjects and
+                    prepare for major examinations.
+                </p>
+
+                <button
+                    type="button"
+                    onclick="selectLevel('SHS / SHTS')"
+                >
+                    Explore
+                    <span>→</span>
+                </button>
+
+            </article>
+
+
+
+            <!-- TVET -->
+
+            <article class="level-card">
+
+                <div class="level-icon tvet-icon">
+                    🛠️
+                </div>
+
+                <span class="level-number">
+                    LEVEL 04
+                </span>
+
+                <h3>
+                    TVET
+                </h3>
+
+                <p>
+                    Develop practical skills and
+                    technical knowledge.
+                </p>
+
+                <button
+                    type="button"
+                    onclick="selectLevel('TVET')"
+                >
+                    Explore
+                    <span>→</span>
+                </button>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     FEATURES
+========================================= -->
+
+<section
+    class="features-section"
+    id="features"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                THE EDUVORA EXPERIENCE
+            </span>
+
+            <h2>
+                Everything you need
+                <span>to improve.</span>
+            </h2>
+
+            <p>
+                One platform for learning,
+                practice and progress.
+            </p>
+
+        </div>
+
+
+
+        <div class="features-grid">
+
+
+            <!-- LEARNING -->
+
+            <article class="feature-card feature-large">
+
+                <span class="feature-number">
+                    01
+                </span>
+
+                <div class="feature-icon">
+                    📚
+                </div>
+
+                <h3>
+                    Learning System
+                </h3>
+
+                <p>
+                    Explore structured lessons,
+                    subjects, topics and practice
+                    designed around your education level.
+                </p>
+
+
+                <div class="learning-preview">
+
+                    <div>
+                        <span>📖</span>
+                        Lessons
+                    </div>
+
+                    <div>
+                        <span>🧠</span>
+                        Topics
+                    </div>
+
+                    <div>
+                        <span>✏️</span>
+                        Practice
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- QUIZ -->
+
+            <article
+                class="feature-card feature-large"
+                id="quiz"
+            >
+
+                <span class="feature-number">
+                    02
+                </span>
+
+                <div class="feature-icon">
+                    🧠
+                </div>
+
+                <h3>
+                    Quiz Arena
+                </h3>
+
+                <p>
+                    Test your knowledge with quick
+                    quizzes, topic challenges and
+                    practice questions.
+                </p>
+
+
+                <div class="quiz-preview">
+
+                    <small>
+                        PHYSICS • PRACTICE
+                    </small>
+
+                    <strong>
+                        What is the SI unit of force?
+                    </strong>
+
+
+                    <div class="quiz-options">
+
+                        <span>
+                            A. Joule
+                        </span>
+
+                        <span>
+                            B. Newton
+                        </span>
+
+                        <span>
+                            C. Watt
+                        </span>
+
+                        <span>
+                            D. Pascal
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- XP -->
+
+            <article class="feature-card">
+
+                <div class="feature-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    XP & Levels
+                </h3>
+
+                <p>
+                    Earn experience points,
+                    reach new levels and celebrate
+                    your learning achievements.
+                </p>
+
+
+                <div class="xp-preview">
+
+                    <strong>
+                        2,450 XP
+                    </strong>
+
+                    <div>
+
+                        <span>
+                            Level 8
+                        </span>
+
+                        <span>
+                            🔥 7-day streak
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PROGRESS -->
+
+            <article class="feature-card">
+
+                <div class="feature-icon">
+                    📊
+                </div>
+
+                <h3>
+                    Progress Tracking
+                </h3>
+
+                <p>
+                    Understand your performance,
+                    completed topics and areas
+                    that need more practice.
+                </p>
+
+
+                <div class="mini-chart">
+
+                    <span style="height:40%"></span>
+                    <span style="height:60%"></span>
+                    <span style="height:52%"></span>
+                    <span style="height:75%"></span>
+                    <span style="height:92%"></span>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     AI STUDY COACH
+========================================= -->
+
+<section class="ai-section">
+
+    <div class="container ai-grid">
+
+
+        <div class="ai-content">
+
+            <span class="section-label">
+                COMING SOON
+            </span>
+
+            <h2>
+                Meet your
+                <span>AI Study Coach.</span>
+            </h2>
+
+            <p>
+                A future learning companion that
+                can explain difficult concepts,
+                recommend topics and help you
+                build better study habits.
+            </p>
+
+
+            <div class="ai-list">
+
+                <div>
+                    <span>✓</span>
+                    Explain difficult concepts
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Recommend what to study
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Create study plans
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Help you improve
+                </div>
+
+            </div>
+
+
+            <button
+                class="secondary-btn"
+                type="button"
+                disabled
+            >
+                Coming Soon
+            </button>
+
+        </div>
+
+
+
+        <div class="ai-visual">
+
+            <div class="ai-glow"></div>
+
+            <div class="ai-orb">
+                ✦
+            </div>
+
+
+            <div class="ai-message ai-message-one">
+                Explain this topic to me.
+            </div>
+
+
+            <div class="ai-message ai-message-two">
+                Here's a simpler way to understand it...
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     STUDY TOOLS
+========================================= -->
+
+<section
+    class="tools-section"
+    id="tools"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                STUDY TOOLS
+            </span>
+
+            <h2>
+                Tools for
+                <span>smarter studying.</span>
+            </h2>
+
+            <p>
+                Helpful tools designed to make
+                studying easier and more organized.
+            </p>
+
+        </div>
+
+
+
+        <div class="tools-grid">
+
+
+            <article class="tool-card">
+
+                <span>📈</span>
+
+                <h3>
+                    GPA Calculator
+                </h3>
+
+                <p>
+                    Calculate and monitor your GPA.
+                </p>
+
+            </article>
+
+
+            <article class="tool-card">
+
+                <span>📝</span>
+
+                <h3>
+                    Grade Calculator
+                </h3>
+
+                <p>
+                    Understand your grades and results.
+                </p>
+
+            </article>
+
+
+            <article class="tool-card">
+
+                <span>🔢</span>
+
+                <h3>
+                    Scientific Calculator
+                </h3>
+
+                <p>
+                    Perform advanced calculations.
+                </p>
+
+            </article>
+
+
+            <article class="tool-card">
+
+                <span>⏱️</span>
+
+                <h3>
+                    Study Timer
+                </h3>
+
+                <p>
+                    Stay focused during study sessions.
+                </p>
+
+            </article>
+
+
+            <article class="tool-card">
+
+                <span>📅</span>
+
+                <h3>
+                    Exam Countdown
+                </h3>
+
+                <p>
+                    Track important examination dates.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     PREMIUM
+========================================= -->
+
+<section
+    class="premium-section"
+    id="premium"
+>
+
+    <div class="container">
+
+        <div class="premium-card">
+
+
+            <div class="premium-content">
+
+                <span class="premium-label">
+                    EDUVORA PREMIUM
+                </span>
+
+                <h2>
+                    Unlock your
+                    <span>full potential.</span>
+                </h2>
+
+                <p>
+                    Get access to powerful learning
+                    features designed to give you
+                    a more personalized experience.
+                </p>
+
+
+                <button
+                    class="premium-btn"
+                    type="button"
+                    disabled
+                >
+                    Coming Soon
+                </button>
+
+            </div>
+
+
+
+            <div class="premium-features">
+
+                <div>
+                    ✓ Unlimited quizzes
+                </div>
+
+                <div>
+                    ✓ Personalized study plans
+                </div>
+
+                <div>
+                    ✓ AI Study Coach
+                </div>
+
+                <div>
+                    ✓ Detailed analytics
+                </div>
+
+                <div>
+                    ✓ Advanced practice tests
+                </div>
+
+                <div>
+                    ✓ Ad-free experience
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+    <div class="container footer-grid">
+
+
+        <div class="footer-brand">
+
+            <a
+                href="#home"
+                class="logo"
+            >
+
+                <span class="logo-icon">
+                    E
+                </span>
+
+                <span class="logo-text">
+                    Eduvora
+                </span>
+
+            </a>
+
+
+            <p>
+                Learn. Practice. Level Up.
+            </p>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <h4>
+                Platform
+            </h4>
+
+            <a href="#levels">
+                Learn
+            </a>
+
+            <a href="#quiz">
+                Quiz Arena
+            </a>
+
+            <a href="#tools">
+                Study Tools
+            </a>
+
+            <a href="#premium">
+                Premium
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <h4>
+                Education
+            </h4>
+
+            <a href="#levels">
+                Basic School
+            </a>
+
+            <a href="#levels">
+                JHS
+            </a>
+
+            <a href="#levels">
+                SHS / SHTS
+            </a>
+
+            <a href="#levels">
+                TVET
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+            <h4>
+                Eduvora
+            </h4>
+
+            <a href="#">
+                About
+            </a>
+
+            <a href="#">
+                Contact
+            </a>
+
+            <a href="#">
+                Privacy
+            </a>
+
+            <a href="#">
+                Terms
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="container footer-bottom">
+
+        <span>
+            © 2026 Eduvora. All rights reserved.
+        </span>
+
+        <span>
+            Built for the next generation of learners.
+        </span>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================
+     EDUCATION LEVEL MODAL
+========================================= -->
+
+<div
+    class="modal-overlay"
+    id="levelModal"
+    onclick="closeModalOutside(event)"
+>
+
+    <div class="level-modal">
+
+
+        <button
+            class="modal-close"
+            type="button"
+            onclick="closeLevelModal()"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+
+        <div class="modal-icon">
+            🎓
+        </div>
+
+
+        <span class="section-label">
+            GET STARTED
+        </span>
+
+
+        <h2>
+            What's your
+            <span>education level?</span>
+        </h2>
+
+
+        <p>
+            Choose your level and we'll take you
+            to the right learning experience.
+        </p>
+
+
+
+        <div class="modal-levels">
+
+
+            <button
+                type="button"
+                onclick="selectLevel('Basic School')"
+            >
+
+                <span>📘</span>
+
+                <div>
+
+                    <strong>
+                        Basic School
+                    </strong>
+
+                    <small>
+                        Primary education
+                    </small>
+
+                </div>
+
+                <b>→</b>
+
+            </button>
+
+
+
+            <button
+                type="button"
+                onclick="selectLevel('JHS')"
+            >
+
+                <span>🎓</span>
+
+                <div>
+
+                    <strong>
+                        JHS
+                    </strong>
+
+                    <small>
+                        Junior High School
+                    </small>
+
+                </div>
+
+                <b>→</b>
+
+            </button>
+
+
+
+            <button
+                type="button"
+                onclick="selectLevel('SHS / SHTS')"
+            >
+
+                <span>🔬</span>
+
+                <div>
+
+                    <strong>
+                        SHS / SHTS
+                    </strong>
+
+                    <small>
+                        Senior High School
+                    </small>
+
+                </div>
+
+                <b>→</b>
+
+            </button>
+
+
+
+            <button
+                type="button"
+                onclick="selectLevel('TVET')"
+            >
+
+                <span>🛠️</span>
+
+                <div>
+
+                    <strong>
+                        TVET
+                    </strong>
+
+                    <small>
+                        Technical & Vocational
+                    </small>
+
+                </div>
+
+                <b>→</b>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
