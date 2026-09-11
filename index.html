@@ -1,1452 +1,1827 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Eduvora | Learn. Practice. Level Up.</title>
-
-  <meta
-    name="description"
-    content="Eduvora is a modern learning platform designed to help Ghanaian students learn, practice, track progress and achieve more."
-  >
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary: #3157d5;
-      --primary-dark: #2444b2;
-      --accent: #6c63ff;
-      --text: #172033;
-      --muted: #687386;
-      --background: #f7f9fd;
-      --card: #ffffff;
-      --border: #e5e9f2;
-      --success: #16a36a;
-      --gold: #f5b700;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      color: var(--text);
-      background: var(--background);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    button {
-      font-family: inherit;
-      cursor: pointer;
-    }
-
-    /* =========================
-       NAVBAR
-    ========================= */
-
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255,255,255,0.94);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(229,233,242,0.8);
-    }
-
-    .nav-container {
-      max-width: 1180px;
-      margin: auto;
-      height: 76px;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 23px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
-
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: white;
-      display: grid;
-      place-items: center;
-      font-size: 19px;
-      font-weight: 900;
-      box-shadow: 0 8px 20px rgba(49,87,213,0.22);
-    }
-
-    .logo span {
-      color: var(--primary);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      font-size: 14px;
-      font-weight: 600;
-      color: #4e596b;
-    }
-
-    .nav-links a {
-      transition: 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-
-    .nav-actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .btn {
-      border: none;
-      border-radius: 11px;
-      padding: 11px 18px;
-      font-size: 14px;
-      font-weight: 700;
-      transition: 0.25s ease;
-    }
-
-    .btn-outline {
-      background: white;
-      color: var(--primary);
-      border: 1px solid #d8def0;
-    }
-
-    .btn-outline:hover {
-      background: #f3f6ff;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-      box-shadow: 0 8px 20px rgba(49,87,213,0.2);
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-    }
-
-    .mobile-menu {
-      display: none;
-      border: none;
-      background: transparent;
-      font-size: 26px;
-      color: var(--text);
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 85% 15%, rgba(108,99,255,0.13), transparent 30%),
-        radial-gradient(circle at 5% 30%, rgba(49,87,213,0.09), transparent 25%),
-        #f8faff;
-    }
-
-    .hero-container {
-      max-width: 1180px;
-      margin: auto;
-      min-height: 650px;
-      padding: 90px 24px 80px;
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      align-items: center;
-      gap: 60px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #edf2ff;
-      color: var(--primary);
-      border: 1px solid #dce5ff;
-      padding: 7px 12px;
-      border-radius: 30px;
-      font-size: 12px;
-      font-weight: 800;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 {
-      font-size: clamp(43px, 5vw, 68px);
-      line-height: 1.03;
-      letter-spacing: -2.5px;
-      max-width: 650px;
-      margin-bottom: 22px;
-    }
-
-    .hero h1 span {
-      color: var(--primary);
-    }
-
-    .hero-text {
-      max-width: 590px;
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.7;
-      margin-bottom: 30px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .hero-buttons .btn {
-      padding: 14px 22px;
-    }
-
-    .trust-row {
-      margin-top: 32px;
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      color: #657084;
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .trust-row span {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .check {
-      color: var(--success);
-      font-weight: 900;
-    }
-
-    /* Dashboard preview */
-
-    .dashboard-preview {
-      position: relative;
-    }
-
-    .dashboard-card {
-      background: white;
-      border: 1px solid #e3e8f2;
-      border-radius: 24px;
-      box-shadow: 0 30px 70px rgba(30,45,80,0.13);
-      overflow: hidden;
-      transform: rotate(1deg);
-    }
-
-    .dashboard-top {
-      background: #fbfcff;
-      border-bottom: 1px solid var(--border);
-      padding: 18px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .mini-logo {
-      font-weight: 800;
-      color: var(--primary);
-    }
-
-    .profile-dot {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #3157d5, #8c7dff);
-      color: white;
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      font-size: 13px;
-    }
-
-    .dashboard-body {
-      padding: 25px;
-    }
-
-    .welcome {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .student-name {
-      font-size: 22px;
-      font-weight: 800;
-      margin-bottom: 18px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .stat {
-      background: #f7f9fd;
-      padding: 13px;
-      border-radius: 13px;
-    }
-
-    .stat small {
-      display: block;
-      color: var(--muted);
-      font-size: 10px;
-      margin-bottom: 3px;
-    }
-
-    .stat strong {
-      font-size: 17px;
-    }
-
-    .xp-card {
-      padding: 17px;
-      background: linear-gradient(135deg, #3157d5, #635be8);
-      color: white;
-      border-radius: 16px;
-      margin-bottom: 18px;
-    }
-
-    .xp-header {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      margin-bottom: 10px;
-    }
-
-    .progress {
-      height: 7px;
-      background: rgba(255,255,255,0.25);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .progress div {
-      width: 72%;
-      height: 100%;
-      background: white;
-      border-radius: inherit;
-    }
-
-    .learning-card {
-      border: 1px solid var(--border);
-      padding: 16px;
-      border-radius: 15px;
-    }
-
-    .learning-card small {
-      color: var(--muted);
-    }
-
-    .learning-card h4 {
-      margin: 3px 0 8px;
-    }
-
-    .learning-progress {
-      height: 6px;
-      background: #e9edf5;
-      border-radius: 10px;
-    }
-
-    .learning-progress div {
-      height: 100%;
-      width: 64%;
-      background: var(--primary);
-      border-radius: inherit;
-    }
-
-    .floating-badge {
-      position: absolute;
-      background: white;
-      border: 1px solid var(--border);
-      box-shadow: 0 15px 35px rgba(25,40,70,0.13);
-      padding: 13px 16px;
-      border-radius: 14px;
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .badge-one {
-      left: -30px;
-      bottom: 50px;
-    }
-
-    .badge-two {
-      right: -25px;
-      top: 70px;
-    }
-
-    /* =========================
-       SECTIONS
-    ========================= */
-
-    .section {
-      max-width: 1180px;
-      margin: auto;
-      padding: 85px 24px;
-    }
-
-    .section-header {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 45px;
-    }
-
-    .section-label {
-      color: var(--primary);
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-    }
-
-    .section h2 {
-      font-size: clamp(30px, 4vw, 44px);
-      line-height: 1.15;
-      letter-spacing: -1px;
-      margin-bottom: 12px;
-    }
-
-    .section-header p {
-      color: var(--muted);
-    }
-
-    /* =========================
-       LEVEL CARDS
-    ========================= */
-
-    .levels {
-      background: white;
-    }
-
-    .level-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .level-card {
-      background: white;
-      border: 1px solid var(--border);
-      padding: 25px;
-      border-radius: 18px;
-      transition: 0.25s;
-      cursor: pointer;
-    }
-
-    .level-card:hover {
-      transform: translateY(-6px);
-      border-color: #cbd5f5;
-      box-shadow: 0 18px 35px rgba(35,50,90,0.09);
-    }
-
-    .level-icon {
-      width: 52px;
-      height: 52px;
-      display: grid;
-      place-items: center;
-      border-radius: 15px;
-      background: #edf2ff;
-      font-size: 24px;
-      margin-bottom: 17px;
-    }
-
-    .level-card h3 {
-      font-size: 18px;
-      margin-bottom: 5px;
-    }
-
-    .level-card p {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    /* =========================
-       FEATURES
-    ========================= */
-
-    .features {
-      background: #f7f9fd;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .feature {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 27px;
-    }
-
-    .feature-icon {
-      font-size: 25px;
-      margin-bottom: 15px;
-    }
-
-    .feature h3 {
-      margin-bottom: 7px;
-      font-size: 19px;
-    }
-
-    .feature p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* =========================
-       PREMIUM
-    ========================= */
-
-    .premium {
-      background: white;
-    }
-
-    .premium-box {
-      background: linear-gradient(135deg, #172554, #293b91);
-      color: white;
-      border-radius: 28px;
-      padding: 55px;
-      display: grid;
-      grid-template-columns: 1fr 0.8fr;
-      gap: 50px;
-      align-items: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .premium-box::after {
-      content: "";
-      width: 350px;
-      height: 350px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.05);
-      position: absolute;
-      right: -100px;
-      top: -130px;
-    }
-
-    .premium-box h2 {
-      font-size: 38px;
-      margin-bottom: 13px;
-    }
-
-    .premium-box p {
-      color: #d4dcff;
-      max-width: 540px;
-      margin-bottom: 23px;
-    }
-
-    .premium-list {
-      display: grid;
-      gap: 11px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .premium-item {
-      background: rgba(255,255,255,0.09);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 13px 15px;
-      border-radius: 12px;
-      font-size: 14px;
-    }
-
-    /* =========================
-       CTA
-    ========================= */
-
-    .cta {
-      text-align: center;
-      padding: 90px 24px;
-    }
-
-    .cta h2 {
-      font-size: clamp(32px, 4vw, 46px);
-      margin-bottom: 12px;
-    }
-
-    .cta p {
-      color: var(--muted);
-      max-width: 550px;
-      margin: 0 auto 25px;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      background: #111827;
-      color: white;
-    }
-
-    .footer-container {
-      max-width: 1180px;
-      margin: auto;
-      padding: 55px 24px 25px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.4fr repeat(3, 1fr);
-      gap: 40px;
-      padding-bottom: 40px;
-    }
-
-    .footer-brand p {
-      color: #9ca6b7;
-      max-width: 320px;
-      font-size: 14px;
-      margin-top: 13px;
-    }
-
-    .footer-column h4 {
-      font-size: 14px;
-      margin-bottom: 15px;
-    }
-
-    .footer-column a {
-      display: block;
-      color: #9ca6b7;
-      font-size: 13px;
-      margin: 9px 0;
-    }
-
-    .footer-column a:hover {
-      color: white;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid #293242;
-      padding-top: 20px;
-      color: #7f8999;
-      font-size: 12px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    /* =========================
-       MODAL
-    ========================= */
-
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      background: rgba(12,18,32,0.65);
-      backdrop-filter: blur(6px);
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .modal.active {
-      display: flex;
-    }
-
-    .modal-box {
-      width: min(500px, 100%);
-      background: white;
-      border-radius: 22px;
-      padding: 30px;
-      position: relative;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.2);
-      animation: modalIn 0.25s ease;
-    }
-
-    @keyframes modalIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .close-modal {
-      position: absolute;
-      right: 18px;
-      top: 15px;
-      border: none;
-      background: #f0f2f7;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      font-size: 18px;
-    }
-
-    .modal-box h2 {
-      margin-bottom: 8px;
-    }
-
-    .modal-box p {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-
-    .level-options {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .level-option {
-      border: 1px solid var(--border);
-      background: #fafbfe;
-      padding: 18px;
-      border-radius: 14px;
-      text-align: left;
-      transition: 0.2s;
-    }
-
-    .level-option:hover {
-      border-color: var(--primary);
-      background: #f1f4ff;
-    }
-
-    .level-option strong {
-      display: block;
-      margin-bottom: 3px;
-    }
-
-    .level-option small {
-      color: var(--muted);
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================= */
-
-    @media (max-width: 900px) {
-      .nav-links,
-      .nav-actions {
-        display: none;
-      }
-
-      .mobile-menu {
-        display: block;
-      }
-
-      .hero-container {
-        grid-template-columns: 1fr;
-        padding-top: 65px;
-      }
-
-      .hero {
-        text-align: center;
-      }
-
-      .hero-text {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-buttons,
-      .trust-row {
-        justify-content: center;
-      }
-
-      .dashboard-preview {
-        max-width: 620px;
-        margin: auto;
-      }
-
-      .level-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .feature-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .premium-box {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .nav-container {
-        height: 68px;
-      }
-
-      .hero-container {
-        padding: 55px 18px 60px;
-      }
-
-      .hero h1 {
-        letter-spacing: -1.5px;
-      }
-
-      .hero-text {
-        font-size: 15px;
-      }
-
-      .stats {
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-
-      .badge-one {
-        left: -8px;
-        bottom: 25px;
-      }
-
-      .badge-two {
-        right: -8px;
-        top: 25px;
-      }
-
-      .section {
-        padding: 65px 18px;
-      }
-
-      .level-grid,
-      .feature-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .premium-box {
-        padding: 30px 22px;
-      }
-
-      .premium-box h2 {
-        font-size: 30px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 28px;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-      }
-
-      .level-options {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Eduvora | Student Learning Platform</title>
+
+<meta name="description"
+content="Eduvora helps students learn, practice, track progress and level up.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --primary:#3157d5;
+    --primary-dark:#2444b2;
+    --accent:#6c63ff;
+    --text:#172033;
+    --muted:#6b7587;
+    --background:#f6f8fc;
+    --card:#ffffff;
+    --border:#e4e8f0;
+    --success:#18a66b;
+    --warning:#f3a900;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Arial,Helvetica,sans-serif;
+    background:var(--background);
+    color:var(--text);
+    line-height:1.5;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* ================================
+   LANDING PAGE
+================================ */
+
+.navbar{
+    height:72px;
+    background:white;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.nav-container{
+    width:min(1180px,calc(100% - 36px));
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:22px;
+    font-weight:800;
+}
+
+.logo-icon{
+    width:39px;
+    height:39px;
+    border-radius:11px;
+    background:linear-gradient(135deg,var(--primary),var(--accent));
+    color:white;
+    display:grid;
+    place-items:center;
+    font-weight:900;
+}
+
+.logo span{
+    color:var(--primary);
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
+    font-size:14px;
+    font-weight:600;
+    color:#555f71;
+}
+
+.nav-links a:hover{
+    color:var(--primary);
+}
+
+.nav-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.btn{
+    border:none;
+    padding:11px 18px;
+    border-radius:10px;
+    font-weight:700;
+    font-size:14px;
+    transition:.2s;
+}
+
+.btn-primary{
+    background:var(--primary);
+    color:white;
+}
+
+.btn-primary:hover{
+    background:var(--primary-dark);
+    transform:translateY(-1px);
+}
+
+.btn-light{
+    background:white;
+    color:var(--primary);
+    border:1px solid var(--border);
+}
+
+.btn-light:hover{
+    background:#f1f4ff;
+}
+
+.hero{
+    min-height:620px;
+    display:flex;
+    align-items:center;
+    background:
+    radial-gradient(circle at 85% 20%,rgba(108,99,255,.14),transparent 30%),
+    radial-gradient(circle at 10% 40%,rgba(49,87,213,.08),transparent 25%);
+}
+
+.hero-container{
+    width:min(1180px,calc(100% - 36px));
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+    padding:80px 0;
+}
+
+.eyebrow{
+    display:inline-block;
+    background:#edf2ff;
+    color:var(--primary);
+    border:1px solid #dce4ff;
+    padding:7px 13px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(44px,6vw,68px);
+    line-height:1.02;
+    letter-spacing:-2px;
+    margin-bottom:22px;
+}
+
+.hero h1 span{
+    color:var(--primary);
+}
+
+.hero p{
+    max-width:570px;
+    color:var(--muted);
+    font-size:18px;
+    margin-bottom:28px;
+}
+
+.hero-actions{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.hero-actions .btn{
+    padding:14px 21px;
+}
+
+.preview{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:22px;
+    box-shadow:0 25px 60px rgba(25,40,80,.13);
+}
+
+.preview-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.avatar{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--primary),var(--accent));
+    color:white;
+    display:grid;
+    place-items:center;
+    font-weight:800;
+}
+
+.preview-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.preview-stat{
+    background:#f7f9fd;
+    padding:14px;
+    border-radius:12px;
+}
+
+.preview-stat small{
+    color:var(--muted);
+    display:block;
+    font-size:10px;
+}
+
+.preview-stat strong{
+    font-size:18px;
+}
+
+.xp-box{
+    background:linear-gradient(135deg,var(--primary),var(--accent));
+    color:white;
+    padding:18px;
+    border-radius:15px;
+    margin:15px 0;
+}
+
+.xp-row{
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+    margin-bottom:9px;
+}
+
+.progress{
+    height:7px;
+    background:rgba(255,255,255,.25);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress div{
+    height:100%;
+    width:72%;
+    background:white;
+}
+
+.preview-course{
+    border:1px solid var(--border);
+    border-radius:13px;
+    padding:15px;
+}
+
+.preview-course small{
+    color:var(--muted);
+}
+
+.preview-course h4{
+    margin:4px 0 8px;
+}
+
+/* ================================
+   DASHBOARD
+================================ */
+
+#dashboard{
+    display:none;
+}
+
+.dashboard-layout{
+    display:grid;
+    grid-template-columns:235px 1fr;
+    min-height:calc(100vh - 72px);
+}
+
+.sidebar{
+    background:white;
+    border-right:1px solid var(--border);
+    padding:25px 15px;
+    position:sticky;
+    top:72px;
+    height:calc(100vh - 72px);
+}
+
+.sidebar-logo{
+    padding:0 12px 25px;
+    font-size:20px;
+    font-weight:800;
+}
+
+.sidebar-logo span{
+    color:var(--primary);
+}
+
+.sidebar-menu{
+    display:grid;
+    gap:5px;
+}
+
+.sidebar-item{
+    border:none;
+    background:transparent;
+    width:100%;
+    text-align:left;
+    padding:12px 14px;
+    border-radius:10px;
+    color:#657083;
+    font-size:14px;
+    font-weight:650;
+}
+
+.sidebar-item:hover,
+.sidebar-item.active{
+    background:#edf2ff;
+    color:var(--primary);
+}
+
+.sidebar-premium{
+    margin-top:30px;
+    padding:16px;
+    border-radius:15px;
+    background:linear-gradient(135deg,#172554,#3346a5);
+    color:white;
+}
+
+.sidebar-premium h4{
+    margin-bottom:6px;
+}
+
+.sidebar-premium p{
+    font-size:11px;
+    color:#dce3ff;
+    margin-bottom:12px;
+}
+
+.sidebar-premium button{
+    width:100%;
+    border:none;
+    padding:9px;
+    border-radius:8px;
+    background:white;
+    color:#263c91;
+    font-weight:800;
+}
+
+.dashboard-main{
+    padding:30px;
+    max-width:1250px;
+    width:100%;
+    margin:auto;
+}
+
+.dashboard-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.dashboard-header h1{
+    font-size:28px;
+    margin-bottom:3px;
+}
+
+.dashboard-header p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+.dashboard-profile{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.dashboard-avatar{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--primary),var(--accent));
+    color:white;
+    display:grid;
+    place-items:center;
+    font-weight:800;
+}
+
+/* Stats */
+
+.dashboard-stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:22px;
+}
+
+.stat-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:19px;
+}
+
+.stat-card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:9px;
+}
+
+.stat-card small{
+    color:var(--muted);
+    font-size:11px;
+}
+
+.stat-card strong{
+    font-size:24px;
+}
+
+.stat-icon{
+    width:35px;
+    height:35px;
+    display:grid;
+    place-items:center;
+    border-radius:10px;
+    background:#edf2ff;
+}
+
+/* Main dashboard grid */
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:1.6fr .9fr;
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:17px;
+    padding:22px;
+    margin-bottom:20px;
+}
+
+.card-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.card-title h2{
+    font-size:18px;
+}
+
+.card-title a{
+    color:var(--primary);
+    font-size:12px;
+    font-weight:700;
+}
+
+/* Continue learning */
+
+.continue{
+    display:flex;
+    align-items:center;
+    gap:17px;
+    padding:17px;
+    border:1px solid var(--border);
+    border-radius:14px;
+}
+
+.subject-icon{
+    width:53px;
+    height:53px;
+    border-radius:14px;
+    display:grid;
+    place-items:center;
+    background:#edf2ff;
+    font-size:25px;
+    flex-shrink:0;
+}
+
+.continue-info{
+    flex:1;
+}
+
+.continue-info small{
+    color:var(--muted);
+    font-size:10px;
+}
+
+.continue-info h3{
+    font-size:16px;
+    margin:2px 0 7px;
+}
+
+.course-progress{
+    height:6px;
+    background:#edf0f5;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.course-progress div{
+    width:64%;
+    height:100%;
+    background:var(--primary);
+}
+
+.continue button{
+    border:none;
+    background:#edf2ff;
+    color:var(--primary);
+    padding:9px 13px;
+    border-radius:9px;
+    font-weight:800;
+    font-size:12px;
+}
+
+/* Subjects */
+
+.subject-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.subject-card{
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:16px;
+    transition:.2s;
+    cursor:pointer;
+}
+
+.subject-card:hover{
+    transform:translateY(-3px);
+    border-color:#c9d3f4;
+    box-shadow:0 10px 25px rgba(30,50,90,.06);
+}
+
+.subject-card .subject-icon{
+    margin-bottom:11px;
+}
+
+.subject-card h3{
+    font-size:15px;
+}
+
+.subject-card p{
+    color:var(--muted);
+    font-size:11px;
+}
+
+/* Quiz */
+
+.quiz-banner{
+    background:linear-gradient(135deg,#eef2ff,#f5f3ff);
+    border:1px solid #dce4ff;
+    padding:20px;
+    border-radius:15px;
+}
+
+.quiz-banner small{
+    color:var(--primary);
+    font-weight:800;
+}
+
+.quiz-banner h3{
+    margin:5px 0;
+}
+
+.quiz-banner p{
+    color:var(--muted);
+    font-size:12px;
+    margin-bottom:13px;
+}
+
+.quiz-banner button{
+    border:none;
+    background:var(--primary);
+    color:white;
+    padding:9px 14px;
+    border-radius:8px;
+    font-weight:700;
+}
+
+/* Right side */
+
+.level-card{
+    background:linear-gradient(135deg,var(--primary),var(--accent));
+    color:white;
+    border-radius:17px;
+    padding:22px;
+    margin-bottom:20px;
+}
+
+.level-card small{
+    color:#dbe1ff;
+}
+
+.level-card h2{
+    margin:5px 0;
+}
+
+.level-card .progress{
+    margin:14px 0 7px;
+}
+
+.level-card p{
+    font-size:11px;
+    color:#dbe1ff;
+}
+
+/* Achievements */
+
+.achievement-list{
+    display:grid;
+    gap:11px;
+}
+
+.achievement{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.achievement-icon{
+    width:39px;
+    height:39px;
+    border-radius:11px;
+    background:#fff5d9;
+    display:grid;
+    place-items:center;
+}
+
+.achievement strong{
+    display:block;
+    font-size:13px;
+}
+
+.achievement small{
+    color:var(--muted);
+    font-size:10px;
+}
+
+/* Recommendation */
+
+.recommendation{
+    padding:15px;
+    background:#f7f9fd;
+    border-radius:12px;
+}
+
+.recommendation strong{
+    display:block;
+    font-size:13px;
+    margin-bottom:4px;
+}
+
+.recommendation p{
+    color:var(--muted);
+    font-size:11px;
+}
+
+/* AI */
+
+.ai-card{
+    background:linear-gradient(135deg,#f0f3ff,#f8f5ff);
+    border:1px solid #dfe4ff;
+}
+
+.ai-icon{
+    width:45px;
+    height:45px;
+    border-radius:13px;
+    background:white;
+    display:grid;
+    place-items:center;
+    font-size:23px;
+    margin-bottom:12px;
+}
+
+.ai-card h3{
+    margin-bottom:5px;
+}
+
+.ai-card p{
+    color:var(--muted);
+    font-size:12px;
+    margin-bottom:13px;
+}
+
+.ai-card button{
+    border:none;
+    background:var(--primary);
+    color:white;
+    padding:9px 14px;
+    border-radius:8px;
+    font-weight:700;
+}
+
+/* Mobile bottom navigation */
+
+.mobile-bottom{
+    display:none;
+}
+
+/* ================================
+   MODAL
+================================ */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(10,18,35,.65);
+    z-index:500;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:min(470px,100%);
+    background:white;
+    border-radius:20px;
+    padding:28px;
+}
+
+.modal-box h2{
+    margin-bottom:7px;
+}
+
+.modal-box p{
+    color:var(--muted);
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+.level-options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.level-option{
+    border:1px solid var(--border);
+    background:#fafbfe;
+    padding:18px;
+    border-radius:13px;
+    text-align:left;
+}
+
+.level-option:hover{
+    border-color:var(--primary);
+    background:#f1f4ff;
+}
+
+.level-option strong{
+    display:block;
+    margin-bottom:3px;
+}
+
+.level-option small{
+    color:var(--muted);
+}
+
+.close{
+    float:right;
+    border:none;
+    background:#f0f2f6;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    font-size:18px;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media(max-width:900px){
+
+    .nav-links,
+    .nav-buttons{
+        display:none;
+    }
+
+    .hero-container{
+        grid-template-columns:1fr;
+        padding:55px 0;
+    }
+
+    .hero{
+        text-align:center;
+    }
+
+    .hero p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-actions{
+        justify-content:center;
+    }
+
+    .dashboard-layout{
+        grid-template-columns:1fr;
+    }
+
+    .sidebar{
+        display:none;
+    }
+
+    .dashboard-main{
+        padding:22px 17px 90px;
+    }
+
+    .dashboard-stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .dashboard-grid{
+        grid-template-columns:1fr;
+    }
+
+    .mobile-bottom{
+        display:grid;
+        grid-template-columns:repeat(5,1fr);
+        position:fixed;
+        bottom:0;
+        left:0;
+        right:0;
+        background:white;
+        border-top:1px solid var(--border);
+        z-index:200;
+        padding:7px 4px;
+    }
+
+    .mobile-bottom button{
+        border:none;
+        background:transparent;
+        color:#717b8c;
+        font-size:10px;
+    }
+
+    .mobile-bottom button span{
+        display:block;
+        font-size:19px;
+    }
+}
+
+@media(max-width:600px){
+
+    .hero h1{
+        font-size:43px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .preview{
+        padding:15px;
+    }
+
+    .dashboard-header{
+        align-items:flex-start;
+    }
+
+    .dashboard-header h1{
+        font-size:22px;
+    }
+
+    .dashboard-profile{
+        display:none;
+    }
+
+    .dashboard-stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat-card strong{
+        font-size:21px;
+    }
+
+    .subject-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .continue{
+        align-items:flex-start;
+        flex-wrap:wrap;
+    }
+
+    .continue-info{
+        min-width:calc(100% - 70px);
+    }
+
+    .continue button{
+        margin-left:70px;
+    }
+
+    .level-options{
+        grid-template-columns:1fr;
+    }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- =========================
-       NAVIGATION
-  ========================== -->
+<!-- =================================
+     LANDING PAGE
+================================= -->
 
-  <header class="navbar">
+<div id="landing">
+
+<header class="navbar">
     <div class="nav-container">
 
-      <a href="#" class="logo">
-        <div class="logo-icon">E</div>
-        Edu<span>vora</span>
-      </a>
-
-      <nav class="nav-links">
-        <a href="#learn">Learn</a>
-        <a href="#features">Features</a>
-        <a href="#premium">Premium</a>
-        <a href="#about">About</a>
-      </nav>
-
-      <div class="nav-actions">
-        <button class="btn btn-outline" onclick="showLogin()">
-          Log in
-        </button>
-
-        <button class="btn btn-primary" onclick="openLevelModal()">
-          Get Started
-        </button>
-      </div>
-
-      <button class="mobile-menu" onclick="openLevelModal()">
-        ☰
-      </button>
-
-    </div>
-  </header>
-
-
-  <!-- =========================
-       HERO
-  ========================== -->
-
-  <section class="hero">
-
-    <div class="hero-container">
-
-      <div>
-
-        <div class="eyebrow">
-          🇬🇭 Built for students
-        </div>
-
-        <h1>
-          Learn smarter.<br>
-          <span>Level up.</span>
-        </h1>
-
-        <p class="hero-text">
-          Eduvora is a modern learning platform designed to help
-          students learn their subjects, practice with quizzes,
-          track their progress and become better every day.
-        </p>
-
-        <div class="hero-buttons">
-
-          <button class="btn btn-primary" onclick="openLevelModal()">
-            Start Learning →
-          </button>
-
-          <a href="#features" class="btn btn-outline">
-            Explore Features
-          </a>
-
-        </div>
-
-        <div class="trust-row">
-          <span><b class="check">✓</b> Curriculum-focused</span>
-          <span><b class="check">✓</b> Learn at your pace</span>
-          <span><b class="check">✓</b> Free to start</span>
-        </div>
-
-      </div>
-
-
-      <!-- Dashboard preview -->
-
-      <div class="dashboard-preview">
-
-        <div class="dashboard-card">
-
-          <div class="dashboard-top">
-            <div class="mini-logo">Eduvora</div>
-            <div class="profile-dot">E</div>
-          </div>
-
-          <div class="dashboard-body">
-
-            <div class="welcome">Good morning 👋</div>
-            <div class="student-name">Ready to learn?</div>
-
-            <div class="stats">
-
-              <div class="stat">
-                <small>XP</small>
-                <strong>2,450</strong>
-              </div>
-
-              <div class="stat">
-                <small>Streak</small>
-                <strong>7 🔥</strong>
-              </div>
-
-              <div class="stat">
-                <small>Level</small>
-                <strong>8</strong>
-              </div>
-
-            </div>
-
-            <div class="xp-card">
-
-              <div class="xp-header">
-                <span>Knowledge Explorer</span>
-                <strong>72%</strong>
-              </div>
-
-              <div class="progress">
-                <div></div>
-              </div>
-
-            </div>
-
-            <div class="learning-card">
-
-              <small>CONTINUE LEARNING</small>
-
-              <h4>Physics — Motion</h4>
-
-              <div class="learning-progress">
-                <div></div>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="floating-badge badge-one">
-          🏆 +120 XP
-        </div>
-
-        <div class="floating-badge badge-two">
-          🎯 Quiz completed!
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       EDUCATION LEVELS
-  ========================== -->
-
-  <section class="levels" id="learn">
-
-    <div class="section">
-
-      <div class="section-header">
-
-        <div class="section-label">
-          Start your journey
-        </div>
-
-        <h2>Learning for every stage</h2>
-
-        <p>
-          Choose your education level and discover lessons,
-          practice questions, quizzes and useful study tools.
-        </p>
-
-      </div>
-
-
-      <div class="level-grid">
-
-        <div class="level-card" onclick="selectLevel('Basic School')">
-          <div class="level-icon">📘</div>
-          <h3>Basic School</h3>
-          <p>Build strong foundations and develop essential skills.</p>
-        </div>
-
-        <div class="level-card" onclick="selectLevel('JHS')">
-          <div class="level-icon">🎓</div>
-          <h3>JHS</h3>
-          <p>Learn, practice and prepare for your next academic stage.</p>
-        </div>
-
-        <div class="level-card" onclick="selectLevel('SHS / SHTS')">
-          <div class="level-icon">🔬</div>
-          <h3>SHS / SHTS</h3>
-          <p>Master your subjects and prepare for important examinations.</p>
-        </div>
-
-        <div class="level-card" onclick="selectLevel('TVET')">
-          <div class="level-icon">🛠️</div>
-          <h3>TVET</h3>
-          <p>Develop practical knowledge and career-ready skills.</p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       FEATURES
-  ========================== -->
-
-  <section class="features" id="features">
-
-    <div class="section">
-
-      <div class="section-header">
-
-        <div class="section-label">
-          Everything in one place
-        </div>
-
-        <h2>Built around the way students learn</h2>
-
-        <p>
-          Eduvora combines learning, practice, progress and
-          motivation in one simple platform.
-        </p>
-
-      </div>
-
-
-      <div class="feature-grid">
-
-        <div class="feature">
-          <div class="feature-icon">📚</div>
-          <h3>Learn</h3>
-          <p>
-            Explore clear lessons and learning materials
-            organized by subject and topic.
-          </p>
-        </div>
-
-        <div class="feature">
-          <div class="feature-icon">🧠</div>
-          <h3>Quiz Arena</h3>
-          <p>
-            Test yourself with topic quizzes, challenges
-            and practice sessions.
-          </p>
-        </div>
-
-        <div class="feature">
-          <div class="feature-icon">📊</div>
-          <h3>Track Progress</h3>
-          <p>
-            See your strengths, weaknesses, scores,
-            XP and learning progress.
-          </p>
-        </div>
-
-        <div class="feature">
-          <div class="feature-icon">🤖</div>
-          <h3>AI Study Coach</h3>
-          <p>
-            Get personalized explanations and study
-            recommendations as you learn.
-          </p>
-        </div>
-
-        <div class="feature">
-          <div class="feature-icon">🏆</div>
-          <h3>Achievements</h3>
-          <p>
-            Earn XP, maintain study streaks and unlock
-            achievements as you improve.
-          </p>
-        </div>
-
-        <div class="feature">
-          <div class="feature-icon">🛠️</div>
-          <h3>Study Tools</h3>
-          <p>
-            Use useful academic tools such as calculators,
-            study timers and exam countdowns.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       PREMIUM
-  ========================== -->
-
-  <section class="premium" id="premium">
-
-    <div class="section">
-
-      <div class="premium-box">
-
-        <div>
-
-          <div class="section-label" style="color:#aebcff;">
-            EDUVORA PREMIUM
-          </div>
-
-          <h2>Go beyond the basics.</h2>
-
-          <p>
-            Upgrade when you're ready for a deeper,
-            more personalized learning experience.
-          </p>
-
-          <button class="btn btn-primary" onclick="showPremiumMessage()">
-            Explore Premium →
-          </button>
-
-        </div>
-
-
-        <div class="premium-list">
-
-          <div class="premium-item">
-            ✓ Unlimited practice quizzes
-          </div>
-
-          <div class="premium-item">
-            ✓ Personalized study plans
-          </div>
-
-          <div class="premium-item">
-            ✓ AI Study Coach
-          </div>
-
-          <div class="premium-item">
-            ✓ Detailed progress analytics
-          </div>
-
-          <div class="premium-item">
-            ✓ Advanced practice tests
-          </div>
-
-          <div class="premium-item">
-            ✓ Ad-free learning experience
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       CTA
-  ========================== -->
-
-  <section class="cta" id="about">
-
-    <h2>Your next level starts here.</h2>
-
-    <p>
-      Learn something new, challenge yourself and keep
-      improving one step at a time.
-    </p>
-
-    <button class="btn btn-primary" onclick="openLevelModal()">
-      Start Learning →
-    </button>
-
-  </section>
-
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
-  <footer>
-
-    <div class="footer-container">
-
-      <div class="footer-grid">
-
-        <div class="footer-brand">
-
-          <a href="#" class="logo">
+        <a class="logo" href="#">
             <div class="logo-icon">E</div>
             Edu<span>vora</span>
-          </a>
+        </a>
 
-          <p>
-            A modern learning platform helping students
-            learn, practice and achieve more.
-          </p>
+        <nav class="nav-links">
+            <a href="#learn">Learn</a>
+            <a href="#features">Features</a>
+            <a href="#premium">Premium</a>
+        </nav>
 
+        <div class="nav-buttons">
+            <button class="btn btn-light" onclick="openLogin()">
+                Log in
+            </button>
+
+            <button class="btn btn-primary" onclick="openLevelModal()">
+                Get Started
+            </button>
         </div>
-
-
-        <div class="footer-column">
-
-          <h4>Platform</h4>
-
-          <a href="#learn">Learn</a>
-          <a href="#features">Features</a>
-          <a href="#premium">Premium</a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-          <h4>Learning</h4>
-
-          <a href="#learn">Basic School</a>
-          <a href="#learn">JHS</a>
-          <a href="#learn">SHS / SHTS</a>
-          <a href="#learn">TVET</a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-          <h4>Account</h4>
-
-          <a href="#" onclick="showLogin()">Log in</a>
-          <a href="#" onclick="openLevelModal()">Create account</a>
-
-        </div>
-
-      </div>
-
-
-      <div class="footer-bottom">
-
-        <span>
-          © 2026 Eduvora. All rights reserved.
-        </span>
-
-        <span>
-          Learn. Practice. Level Up.
-        </span>
-
-      </div>
 
     </div>
-
-  </footer>
-
-
-  <!-- =========================
-       LEVEL MODAL
-  ========================== -->
-
-  <div class="modal" id="levelModal">
-
-    <div class="modal-box">
-
-      <button class="close-modal" onclick="closeLevelModal()">
-        ×
-      </button>
-
-      <h2>Let's get started 🚀</h2>
-
-      <p>
-        Choose your education level to personalize
-        your Eduvora experience.
-      </p>
-
-      <div class="level-options">
-
-        <button class="level-option" onclick="selectLevel('Basic School')">
-          <strong>📘 Basic School</strong>
-          <small>Primary learning</small>
-        </button>
-
-        <button class="level-option" onclick="selectLevel('JHS')">
-          <strong>🎓 JHS</strong>
-          <small>Junior High School</small>
-        </button>
-
-        <button class="level-option" onclick="selectLevel('SHS / SHTS')">
-          <strong>🔬 SHS / SHTS</strong>
-          <small>Senior High School</small>
-        </button>
-
-        <button class="level-option" onclick="selectLevel('TVET')">
-          <strong>🛠️ TVET</strong>
-          <small>Technical & vocational</small>
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
+</header>
 
 
-  <!-- =========================
-       JAVASCRIPT
-  ========================== -->
+<section class="hero">
 
-  <script>
+<div class="hero-container">
 
-    function openLevelModal() {
-      document.getElementById("levelModal").classList.add("active");
-    }
+<div>
 
-    function closeLevelModal() {
-      document.getElementById("levelModal").classList.remove("active");
-    }
+<div class="eyebrow">
+🇬🇭 Built for students
+</div>
 
-    function selectLevel(level) {
+<h1>
+Learn smarter.<br>
+<span>Level up.</span>
+</h1>
 
-      closeLevelModal();
+<p>
+Eduvora brings learning, quizzes, study tools,
+progress tracking and personalized study support
+together in one modern platform.
+</p>
 
-      alert(
-        "Great choice! 🎓\n\n" +
-        "You selected: " + level +
-        "\n\nThe learning dashboard will be connected in the next stage."
-      );
+<div class="hero-actions">
 
-    }
+<button class="btn btn-primary"
+onclick="openLevelModal()">
+Start Learning →
+</button>
 
-    function showLogin() {
+<button class="btn btn-light"
+onclick="showFeatures()">
+Explore Features
+</button>
 
-      alert(
-        "Student login will be connected in the next stage."
-      );
+</div>
 
-    }
+</div>
 
-    function showPremiumMessage() {
 
-      alert(
-        "Eduvora Premium is coming soon.\n\n" +
-        "We will connect student accounts and payments after the core learning system is ready."
-      );
+<div class="preview">
 
-    }
+<div class="preview-top">
 
-    window.addEventListener("click", function(event) {
+<strong>Eduvora Dashboard</strong>
 
-      const modal = document.getElementById("levelModal");
+<div class="avatar">E</div>
 
-      if (event.target === modal) {
-        closeLevelModal();
-      }
+</div>
 
+<div class="preview-stats">
+
+<div class="preview-stat">
+<small>XP</small>
+<strong>2,450</strong>
+</div>
+
+<div class="preview-stat">
+<small>Streak</small>
+<strong>7 🔥</strong>
+</div>
+
+<div class="preview-stat">
+<small>Level</small>
+<strong>8</strong>
+</div>
+
+</div>
+
+<div class="xp-box">
+
+<div class="xp-row">
+<span>Knowledge Explorer</span>
+<strong>72%</strong>
+</div>
+
+<div class="progress">
+<div></div>
+</div>
+
+</div>
+
+<div class="preview-course">
+
+<small>CONTINUE LEARNING</small>
+
+<h4>Physics — Motion</h4>
+
+<div style="height:6px;background:#edf0f5;border-radius:20px;">
+<div style="width:64%;height:100%;background:#3157d5;border-radius:20px;"></div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="learn" style="background:white;padding:80px 20px;text-align:center;">
+
+<h2 style="font-size:38px;margin-bottom:12px;">
+Learning for every student
+</h2>
+
+<p style="color:#6b7587;max-width:600px;margin:auto;">
+Basic School, JHS, SHS/SHTS and TVET students
+can use Eduvora to learn and practice.
+</p>
+
+</section>
+
+
+<section id="features" style="padding:80px 20px;text-align:center;">
+
+<h2 style="font-size:38px;margin-bottom:12px;">
+Everything you need to learn
+</h2>
+
+<p style="color:#6b7587;max-width:600px;margin:auto;">
+Lessons, quizzes, progress tracking, achievements,
+study tools and personalized learning.
+</p>
+
+</section>
+
+
+<section id="premium"
+style="padding:80px 20px;background:white;text-align:center;">
+
+<h2 style="font-size:38px;margin-bottom:12px;">
+Eduvora Premium
+</h2>
+
+<p style="color:#6b7587;max-width:600px;margin:0 auto 20px;">
+Unlock advanced learning tools and personalized
+study features when you're ready.
+</p>
+
+<button class="btn btn-primary"
+onclick="showPremium()">
+Explore Premium
+</button>
+
+</section>
+
+</div>
+
+
+<!-- =================================
+     DASHBOARD
+================================= -->
+
+<div id="dashboard">
+
+<div class="dashboard-layout">
+
+<aside class="sidebar">
+
+<div class="sidebar-logo">
+Edu<span>vora</span>
+</div>
+
+<div class="sidebar-menu">
+
+<button class="sidebar-item active">
+🏠 &nbsp; Dashboard
+</button>
+
+<button class="sidebar-item">
+📚 &nbsp; Learn
+</button>
+
+<button class="sidebar-item">
+🧠 &nbsp; Quiz Arena
+</button>
+
+<button class="sidebar-item">
+📊 &nbsp; My Progress
+</button>
+
+<button class="sidebar-item">
+🏆 &nbsp; Achievements
+</button>
+
+<button class="sidebar-item">
+🛠️ &nbsp; Study Tools
+</button>
+
+<button class="sidebar-item">
+🎓 &nbsp; Opportunities
+</button>
+
+<button class="sidebar-item">
+🤖 &nbsp; AI Study Coach
+</button>
+
+</div>
+
+
+<div class="sidebar-premium">
+
+<h4>✨ Go Premium</h4>
+
+<p>
+Unlock unlimited quizzes,
+AI coaching and advanced progress tools.
+</p>
+
+<button onclick="showPremium()">
+Explore Premium
+</button>
+
+</div>
+
+</aside>
+
+
+<main class="dashboard-main">
+
+<div class="dashboard-header">
+
+<div>
+
+<h1>Good morning 👋</h1>
+
+<p>
+Ready to continue learning?
+</p>
+
+</div>
+
+<div class="dashboard-profile">
+
+<div>
+<strong>Student</strong>
+<div style="font-size:11px;color:#6b7587;">
+Knowledge Explorer
+</div>
+</div>
+
+<div class="dashboard-avatar">
+S
+</div>
+
+</div>
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="dashboard-stats">
+
+<div class="stat-card">
+
+<div class="stat-card-top">
+<small>TOTAL XP</small>
+<div class="stat-icon">⭐</div>
+</div>
+
+<strong>2,450</strong>
+
+</div>
+
+
+<div class="stat-card">
+
+<div class="stat-card-top">
+<small>STUDY STREAK</small>
+<div class="stat-icon">🔥</div>
+</div>
+
+<strong>7 days</strong>
+
+</div>
+
+
+<div class="stat-card">
+
+<div class="stat-card-top">
+<small>QUIZZES</small>
+<div class="stat-icon">🧠</div>
+</div>
+
+<strong>42</strong>
+
+</div>
+
+
+<div class="stat-card">
+
+<div class="stat-card-top">
+<small>SUBJECTS</small>
+<div class="stat-icon">📚</div>
+</div>
+
+<strong>6</strong>
+
+</div>
+
+</div>
+
+
+<div class="dashboard-grid">
+
+<div>
+
+
+<!-- CONTINUE LEARNING -->
+
+<div class="card">
+
+<div class="card-title">
+
+<h2>Continue Learning</h2>
+
+<a href="#">View all</a>
+
+</div>
+
+
+<div class="continue">
+
+<div class="subject-icon">
+⚛️
+</div>
+
+<div class="continue-info">
+
+<small>PHYSICS</small>
+
+<h3>Motion and Forces</h3>
+
+<div class="course-progress">
+<div></div>
+</div>
+
+</div>
+
+<button onclick="startLesson()">
+Continue
+</button>
+
+</div>
+
+</div>
+
+
+<!-- SUBJECTS -->
+
+<div class="card">
+
+<div class="card-title">
+
+<h2>My Subjects</h2>
+
+<a href="#">All subjects</a>
+
+</div>
+
+
+<div class="subject-grid">
+
+<div class="subject-card" onclick="subjectMessage('Mathematics')">
+
+<div class="subject-icon">
+📐
+</div>
+
+<h3>Mathematics</h3>
+
+<p>24 lessons available</p>
+
+</div>
+
+
+<div class="subject-card" onclick="subjectMessage('Physics')">
+
+<div class="subject-icon">
+⚛️
+</div>
+
+<h3>Physics</h3>
+
+<p>18 lessons available</p>
+
+</div>
+
+
+<div class="subject-card" onclick="subjectMessage('Chemistry')">
+
+<div class="subject-icon">
+🧪
+</div>
+
+<h3>Chemistry</h3>
+
+<p>21 lessons available</p>
+
+</div>
+
+
+<div class="subject-card" onclick="subjectMessage('Biology')">
+
+<div class="subject-icon">
+🧬
+</div>
+
+<h3>Biology</h3>
+
+<p>20 lessons available</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="card">
+
+<div class="card-title">
+
+<h2>🧠 Quiz Arena</h2>
+
+<a href="#">View quizzes</a>
+
+</div>
+
+
+<div class="quiz-banner">
+
+<small>DAILY CHALLENGE</small>
+
+<h3>Can you score 10/10?</h3>
+
+<p>
+Test your knowledge and earn XP.
+</p>
+
+<button onclick="startQuiz()">
+Start Challenge →
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div>
+
+
+<!-- LEVEL -->
+
+<div class="level-card">
+
+<small>CURRENT LEVEL</small>
+
+<h2>Level 8</h2>
+
+<strong>Knowledge Explorer</strong>
+
+<div class="progress">
+<div style="width:72%;"></div>
+</div>
+
+<p>
+550 XP until Level 9
+</p>
+
+</div>
+
+
+<!-- RECOMMENDED -->
+
+<div class="card">
+
+<div class="card-title">
+
+<h2>🎯 Recommended</h2>
+
+</div>
+
+<div class="recommendation">
+
+<strong>Review: Electricity</strong>
+
+<p>
+Your recent quizzes suggest
+this topic needs more practice.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- ACHIEVEMENTS -->
+
+<div class="card">
+
+<div class="card-title">
+
+<h2>🏆 Achievements</h2>
+
+<a href="#">View all</a>
+
+</div>
+
+<div class="achievement-list">
+
+<div class="achievement">
+
+<div class="achievement-icon">
+🔥
+</div>
+
+<div>
+<strong>7-Day Streak</strong>
+<small>Studied for 7 days</small>
+</div>
+
+</div>
+
+
+<div class="achievement">
+
+<div class="achievement-icon">
+🎯
+</div>
+
+<div>
+<strong>Quiz Starter</strong>
+<small>Completed 10 quizzes</small>
+</div>
+
+</div>
+
+
+<div class="achievement">
+
+<div class="achievement-icon">
+⚡
+</div>
+
+<div>
+<strong>Fast Learner</strong>
+<small>Earned 1,000 XP</small>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- AI -->
+
+<div class="card ai-card">
+
+<div class="ai-icon">
+🤖
+</div>
+
+<h3>AI Study Coach</h3>
+
+<p>
+Get personalized explanations,
+study recommendations and learning plans.
+</p>
+
+<button onclick="showAI()">
+Try Study Coach
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+
+<!-- MOBILE NAV -->
+
+<div class="mobile-bottom">
+
+<button>
+<span>🏠</span>
+Home
+</button>
+
+<button>
+<span>📚</span>
+Learn
+</button>
+
+<button>
+<span>🧠</span>
+Quiz
+</button>
+
+<button>
+<span>🛠️</span>
+Tools
+</button>
+
+<button>
+<span>👤</span>
+Profile
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =================================
+     LEVEL MODAL
+================================= -->
+
+<div class="modal" id="levelModal">
+
+<div class="modal-box">
+
+<button class="close" onclick="closeLevelModal()">×</button>
+
+<h2>Let's get started 🚀</h2>
+
+<p>
+Choose your education level to personalize
+your learning experience.
+</p>
+
+<div class="level-options">
+
+<button class="level-option"
+onclick="enterDashboard('Basic School')">
+
+<strong>📘 Basic School</strong>
+<small>Primary learning</small>
+
+</button>
+
+
+<button class="level-option"
+onclick="enterDashboard('JHS')">
+
+<strong>🎓 JHS</strong>
+<small>Junior High School</small>
+
+</button>
+
+
+<button class="level-option"
+onclick="enterDashboard('SHS / SHTS')">
+
+<strong>🔬 SHS / SHTS</strong>
+<small>Senior High School</small>
+
+</button>
+
+
+<button class="level-option"
+onclick="enterDashboard('TVET')">
+
+<strong>🛠️ TVET</strong>
+<small>Technical & vocational</small>
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* ===============================
+   LEVEL SELECTION
+================================ */
+
+function openLevelModal(){
+
+    document
+    .getElementById("levelModal")
+    .classList.add("show");
+
+}
+
+function closeLevelModal(){
+
+    document
+    .getElementById("levelModal")
+    .classList.remove("show");
+
+}
+
+function enterDashboard(level){
+
+    closeLevelModal();
+
+    document.getElementById("landing").style.display="none";
+
+    document.getElementById("dashboard").style.display="block";
+
+    window.scrollTo(0,0);
+
+    console.log("Selected level:",level);
+
+}
+
+
+/* ===============================
+   LOGIN
+================================ */
+
+function openLogin(){
+
+    alert(
+        "Student accounts will be connected soon.\n\n" +
+        "The next development stage will add real registration and login."
+    );
+
+}
+
+
+/* ===============================
+   LESSON
+================================ */
+
+function startLesson(){
+
+    alert(
+        "Physics lesson selected.\n\n" +
+        "The real lesson system will be connected next."
+    );
+
+}
+
+
+/* ===============================
+   QUIZ
+================================ */
+
+function startQuiz(){
+
+    alert(
+        "Quiz Arena selected!\n\n" +
+        "The real quiz engine will be built next."
+    );
+
+}
+
+
+/* ===============================
+   SUBJECT
+================================ */
+
+function subjectMessage(subject){
+
+    alert(
+        subject +
+        " learning center selected.\n\n" +
+        "Lessons, topics and quizzes will be connected next."
+    );
+
+}
+
+
+/* ===============================
+   AI
+================================ */
+
+function showAI(){
+
+    alert(
+        "AI Study Coach\n\n" +
+        "This will become your personalized learning assistant."
+    );
+
+}
+
+
+/* ===============================
+   PREMIUM
+================================ */
+
+function showPremium(){
+
+    alert(
+        "Eduvora Premium\n\n" +
+        "Premium subscriptions will be connected after student accounts and the learning system are ready."
+    );
+
+}
+
+
+/* ===============================
+   FEATURES
+================================ */
+
+function showFeatures(){
+
+    document
+    .getElementById("features")
+    .scrollIntoView({
+        behavior:"smooth"
     });
 
-  </script>
+}
+
+
+/* ===============================
+   MODAL OUTSIDE CLICK
+================================ */
+
+window.addEventListener("click",function(event){
+
+    const modal=document.getElementById("levelModal");
+
+    if(event.target===modal){
+
+        closeLevelModal();
+
+    }
+
+});
+
+</script>
 
 </body>
 </html>
