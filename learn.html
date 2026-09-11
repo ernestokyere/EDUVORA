@@ -1,0 +1,1751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Eduvora Learning — Explore subjects, topics and lessons."
+    >
+
+    <meta name="theme-color" content="#155EEF">
+
+    <title>Learn — Eduvora</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =====================================
+           LEARNING DASHBOARD
+        ===================================== */
+
+        .learning-page {
+            min-height: 100vh;
+            background: #F8FAFC;
+        }
+
+        .learning-header {
+            background: white;
+            border-bottom: 1px solid #EAECF0;
+        }
+
+        .learning-nav {
+            min-height: 72px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            color: #667085;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .back-home:hover {
+            color: #155EEF;
+        }
+
+        .level-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            padding: 8px 12px;
+
+            background: #EEF4FF;
+            color: #155EEF;
+
+            border-radius: 30px;
+
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+
+        /* HERO */
+
+        .learning-hero {
+            padding: 55px 0 35px;
+        }
+
+        .learning-hero-content {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .learning-hero h1 {
+            margin-top: 9px;
+
+            font-size: clamp(32px, 5vw, 48px);
+
+            line-height: 1.05;
+
+            letter-spacing: -2px;
+        }
+
+        .learning-hero h1 span {
+            color: #155EEF;
+        }
+
+        .learning-hero p {
+            max-width: 570px;
+
+            margin-top: 13px;
+
+            color: #667085;
+
+            font-size: 13px;
+        }
+
+
+        /* SEARCH */
+
+        .learning-search {
+            position: relative;
+
+            width: 280px;
+        }
+
+        .learning-search input {
+            width: 100%;
+
+            padding: 12px 15px 12px 39px;
+
+            border: 1px solid #D0D5DD;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            background: white;
+
+            font-size: 11px;
+        }
+
+        .learning-search input:focus {
+            border-color: #155EEF;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(21, 94, 239, 0.08);
+        }
+
+        .search-icon {
+            position: absolute;
+
+            left: 14px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #98A2B3;
+
+            font-size: 14px;
+        }
+
+
+        /* BREADCRUMB */
+
+        .learning-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            margin-bottom: 17px;
+
+            color: #98A2B3;
+
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .learning-breadcrumb span:last-child {
+            color: #155EEF;
+        }
+
+
+        /* SUBJECTS */
+
+        .subjects-section {
+            padding: 20px 0 80px;
+        }
+
+        .subjects-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 18px;
+        }
+
+        .subjects-title h2 {
+            font-size: 20px;
+
+            letter-spacing: -0.5px;
+        }
+
+        .subjects-title span {
+            color: #98A2B3;
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .subjects-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 14px;
+        }
+
+        .subject-card {
+            position: relative;
+
+            padding: 23px;
+
+            background: white;
+
+            border: 1px solid #EAECF0;
+
+            border-radius: 17px;
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease,
+                border-color .2s ease;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-4px);
+
+            border-color: #B7D0FF;
+
+            box-shadow:
+                0 14px 35px
+                rgba(16, 24, 40, .07);
+        }
+
+        .subject-icon {
+            width: 48px;
+            height: 48px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 13px;
+
+            font-size: 22px;
+        }
+
+        .subject-card:nth-child(1) .subject-icon {
+            background: #EAF1FF;
+        }
+
+        .subject-card:nth-child(2) .subject-icon {
+            background: #FFF5D9;
+        }
+
+        .subject-card:nth-child(3) .subject-icon {
+            background: #E9FFF5;
+        }
+
+        .subject-card:nth-child(4) .subject-icon {
+            background: #F3EDFF;
+        }
+
+        .subject-card:nth-child(5) .subject-icon {
+            background: #FFF0ED;
+        }
+
+        .subject-card:nth-child(6) .subject-icon {
+            background: #E8F8FF;
+        }
+
+        .subject-card h3 {
+            margin-top: 17px;
+
+            font-size: 17px;
+        }
+
+        .subject-card p {
+            min-height: 42px;
+
+            margin-top: 5px;
+
+            color: #667085;
+
+            font-size: 10px;
+
+            line-height: 1.6;
+        }
+
+        .subject-progress {
+            height: 5px;
+
+            margin-top: 18px;
+
+            overflow: hidden;
+
+            background: #EEF2F6;
+
+            border-radius: 20px;
+        }
+
+        .subject-progress span {
+            display: block;
+
+            height: 100%;
+
+            background: #155EEF;
+
+            border-radius: inherit;
+        }
+
+        .subject-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-top: 8px;
+        }
+
+        .subject-bottom small {
+            color: #98A2B3;
+
+            font-size: 8px;
+        }
+
+        .subject-bottom button {
+            border: none;
+
+            background: transparent;
+
+            color: #155EEF;
+
+            font-size: 9px;
+            font-weight: 800;
+        }
+
+
+        /* TOPICS PANEL */
+
+        .topics-panel {
+            display: none;
+
+            margin-top: 30px;
+
+            padding: 25px;
+
+            background: white;
+
+            border: 1px solid #EAECF0;
+
+            border-radius: 18px;
+        }
+
+        .topics-panel.active {
+            display: block;
+        }
+
+        .topics-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 20px;
+        }
+
+        .topics-header h2 {
+            font-size: 20px;
+        }
+
+        .topics-header p {
+            margin-top: 3px;
+
+            color: #667085;
+
+            font-size: 10px;
+        }
+
+        .close-topics {
+            width: 32px;
+            height: 32px;
+
+            border: none;
+
+            background: #F2F4F7;
+
+            border-radius: 50%;
+
+            font-size: 17px;
+        }
+
+        .topics-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 10px;
+        }
+
+        .topic-card {
+            padding: 16px;
+
+            background: #F8FAFC;
+
+            border: 1px solid #EAECF0;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            transition:
+                border-color .2s ease,
+                background .2s ease;
+        }
+
+        .topic-card:hover {
+            background: #F5F8FF;
+
+            border-color: #B7D0FF;
+        }
+
+        .topic-card strong {
+            display: block;
+
+            font-size: 11px;
+        }
+
+        .topic-card small {
+            display: block;
+
+            margin-top: 4px;
+
+            color: #98A2B3;
+
+            font-size: 8px;
+        }
+
+        .topic-card span {
+            display: inline-block;
+
+            margin-top: 11px;
+
+            color: #155EEF;
+
+            font-size: 8px;
+            font-weight: 800;
+        }
+
+
+        /* LESSON VIEW */
+
+        .lesson-view {
+            display: none;
+
+            margin-top: 25px;
+
+            padding: 30px;
+
+            background: white;
+
+            border: 1px solid #EAECF0;
+
+            border-radius: 18px;
+        }
+
+        .lesson-view.active {
+            display: block;
+        }
+
+        .lesson-tag {
+            color: #155EEF;
+
+            font-size: 9px;
+            font-weight: 800;
+
+            letter-spacing: .7px;
+        }
+
+        .lesson-view h2 {
+            margin-top: 9px;
+
+            font-size: 27px;
+
+            letter-spacing: -1px;
+        }
+
+        .lesson-view p {
+            max-width: 750px;
+
+            margin-top: 13px;
+
+            color: #667085;
+
+            font-size: 12px;
+
+            line-height: 1.8;
+        }
+
+        .lesson-box {
+            margin-top: 25px;
+
+            padding: 20px;
+
+            background: #F8FAFC;
+
+            border-left: 4px solid #155EEF;
+
+            border-radius: 10px;
+        }
+
+        .lesson-box h3 {
+            font-size: 14px;
+        }
+
+        .lesson-box p {
+            margin-top: 6px;
+
+            font-size: 11px;
+        }
+
+        .lesson-actions {
+            display: flex;
+            gap: 10px;
+
+            margin-top: 24px;
+        }
+
+        .lesson-actions button {
+            padding: 11px 17px;
+
+            border-radius: 9px;
+
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        .primary-lesson-btn {
+            border: none;
+
+            background: #155EEF;
+            color: white;
+        }
+
+        .secondary-lesson-btn {
+            border: 1px solid #D0D5DD;
+
+            background: white;
+            color: #475467;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .learning-hero-content {
+                display: block;
+            }
+
+            .learning-search {
+                width: 100%;
+
+                margin-top: 25px;
+            }
+
+            .subjects-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .topics-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 520px) {
+
+            .learning-nav {
+                min-height: 65px;
+            }
+
+            .learning-hero {
+                padding-top: 40px;
+            }
+
+            .learning-hero h1 {
+                font-size: 35px;
+            }
+
+            .subjects-grid,
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .learning-breadcrumb {
+                margin-bottom: 12px;
+            }
+
+            .lesson-view {
+                padding: 21px;
+            }
+
+            .lesson-actions {
+                flex-direction: column;
+            }
+
+            .lesson-actions button {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="learning-page">
+
+    <!-- HEADER -->
+
+    <header class="learning-header">
+
+        <div class="container learning-nav">
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+                <span class="logo-icon">E</span>
+
+                <span class="logo-text">
+                    Eduvora
+                </span>
+            </a>
+
+            <div>
+
+                <a
+                    href="index.html"
+                    class="back-home"
+                >
+                    ← Home
+                </a>
+
+                <span
+                    class="level-pill"
+                    id="levelPill"
+                >
+                    🎓 Learning
+                </span>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main>
+
+        <section class="learning-hero">
+
+            <div class="container">
+
+                <div class="learning-breadcrumb">
+
+                    <span>Eduvora</span>
+
+                    <span>›</span>
+
+                    <span id="breadcrumbLevel">
+                        Learning
+                    </span>
+
+                </div>
+
+
+                <div class="learning-hero-content">
+
+                    <div>
+
+                        <span class="section-label">
+                            YOUR LEARNING SPACE
+                        </span>
+
+                        <h1>
+                            Learn.
+                            <span>Practice.</span>
+                        </h1>
+
+                        <p id="learningDescription">
+                            Choose a subject to explore
+                            lessons, topics and practice.
+                        </p>
+
+                    </div>
+
+
+                    <div class="learning-search">
+
+                        <span class="search-icon">
+                            🔍
+                        </span>
+
+                        <input
+                            type="search"
+                            id="subjectSearch"
+                            placeholder="Search subjects..."
+                            oninput="searchSubjects()"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUBJECTS -->
+
+        <section class="subjects-section">
+
+            <div class="container">
+
+                <div class="subjects-title">
+
+                    <h2>
+                        Subjects
+                    </h2>
+
+                    <span id="subjectCount">
+                        6 subjects
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="subjects-grid"
+                    id="subjectsGrid"
+                >
+
+                </div>
+
+
+                <!-- TOPICS -->
+
+                <div
+                    class="topics-panel"
+                    id="topicsPanel"
+                >
+
+                    <div class="topics-header">
+
+                        <div>
+
+                            <h2 id="topicsTitle">
+                                Topics
+                            </h2>
+
+                            <p>
+                                Choose a topic to begin learning.
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="close-topics"
+                            onclick="closeTopics()"
+                        >
+                            ×
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="topics-grid"
+                        id="topicsGrid"
+                    >
+
+                    </div>
+
+                </div>
+
+
+                <!-- LESSON -->
+
+                <div
+                    class="lesson-view"
+                    id="lessonView"
+                >
+
+                    <span
+                        class="lesson-tag"
+                        id="lessonSubject"
+                    >
+                        LESSON
+                    </span>
+
+                    <h2 id="lessonTitle">
+                        Topic
+                    </h2>
+
+                    <p id="lessonIntro">
+                        Lesson introduction.
+                    </p>
+
+
+                    <div class="lesson-box">
+
+                        <h3>
+                            What you'll learn
+                        </h3>
+
+                        <p id="lessonContent">
+                            Lesson content will appear here.
+                        </p>
+
+                    </div>
+
+
+                    <div class="lesson-actions">
+
+                        <button
+                            class="primary-lesson-btn"
+                            onclick="startPractice()"
+                        >
+                            Start Practice →
+                        </button>
+
+                        <button
+                            class="secondary-lesson-btn"
+                            onclick="closeLesson()"
+                        >
+                            Back to Topics
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    /* =====================================
+       EDUVORA STAGE 2 DATA
+    ===================================== */
+
+    const learningData = {
+
+        "Basic School": {
+
+            description:
+                "Build strong foundations with engaging lessons and practice.",
+
+            subjects: [
+
+                {
+                    name: "Mathematics",
+                    icon: "🔢",
+                    description: "Numbers, shapes, measurements and problem solving.",
+                    progress: 20,
+
+                    topics: [
+                        "Numbers",
+                        "Fractions",
+                        "Geometry",
+                        "Measurement",
+                        "Word Problems"
+                    ]
+                },
+
+                {
+                    name: "English",
+                    icon: "📖",
+                    description: "Reading, grammar, vocabulary and communication.",
+                    progress: 35,
+
+                    topics: [
+                        "Grammar",
+                        "Reading",
+                        "Vocabulary",
+                        "Writing",
+                        "Comprehension"
+                    ]
+                },
+
+                {
+                    name: "Science",
+                    icon: "🔬",
+                    description: "Explore living things, matter, energy and nature.",
+                    progress: 15,
+
+                    topics: [
+                        "Living Things",
+                        "Matter",
+                        "Energy",
+                        "The Human Body",
+                        "Our Environment"
+                    ]
+                },
+
+                {
+                    name: "ICT",
+                    icon: "💻",
+                    description: "Learn the basics of computers and digital technology.",
+                    progress: 10,
+
+                    topics: [
+                        "Computer Basics",
+                        "Parts of a Computer",
+                        "Internet",
+                        "Typing",
+                        "Digital Safety"
+                    ]
+                },
+
+                {
+                    name: "Social Studies",
+                    icon: "🌍",
+                    description: "Understand people, communities and the world around us.",
+                    progress: 25,
+
+                    topics: [
+                        "The Family",
+                        "The Community",
+                        "Culture",
+                        "Environment",
+                        "Citizenship"
+                    ]
+                },
+
+                {
+                    name: "Creative Arts",
+                    icon: "🎨",
+                    description: "Develop creativity through art, design and expression.",
+                    progress: 18,
+
+                    topics: [
+                        "Drawing",
+                        "Colour",
+                        "Design",
+                        "Craft",
+                        "Music"
+                    ]
+                }
+
+            ]
+
+        },
+
+
+        "JHS": {
+
+            description:
+                "Strengthen your knowledge and prepare for important examinations.",
+
+            subjects: [
+
+                {
+                    name: "Mathematics",
+                    icon: "🔢",
+                    description: "Develop mathematical reasoning and problem solving.",
+                    progress: 30,
+
+                    topics: [
+                        "Number Systems",
+                        "Algebra",
+                        "Geometry",
+                        "Statistics",
+                        "Probability"
+                    ]
+                },
+
+                {
+                    name: "English Language",
+                    icon: "📚",
+                    description: "Improve grammar, comprehension and communication.",
+                    progress: 25,
+
+                    topics: [
+                        "Grammar",
+                        "Comprehension",
+                        "Summary",
+                        "Writing",
+                        "Literature"
+                    ]
+                },
+
+                {
+                    name: "Integrated Science",
+                    icon: "🧪",
+                    description: "Understand science through connected concepts.",
+                    progress: 40,
+
+                    topics: [
+                        "Cells",
+                        "Matter",
+                        "Energy",
+                        "Forces",
+                        "Environment"
+                    ]
+                },
+
+                {
+                    name: "Social Studies",
+                    icon: "🌍",
+                    description: "Explore society, citizenship, governance and development.",
+                    progress: 22,
+
+                    topics: [
+                        "Citizenship",
+                        "Governance",
+                        "Culture",
+                        "Development",
+                        "Environment"
+                    ]
+                },
+
+                {
+                    name: "ICT",
+                    icon: "💻",
+                    description: "Build essential digital and computing skills.",
+                    progress: 28,
+
+                    topics: [
+                        "Computer Systems",
+                        "Networks",
+                        "Internet",
+                        "Programming",
+                        "Cyber Safety"
+                    ]
+                },
+
+                {
+                    name: "Religious & Moral Education",
+                    icon: "📘",
+                    description: "Develop understanding of values, beliefs and morality.",
+                    progress: 20,
+
+                    topics: [
+                        "Values",
+                        "Morality",
+                        "Religion",
+                        "Community",
+                        "Leadership"
+                    ]
+                }
+
+            ]
+
+        },
+
+
+        "SHS / SHTS": {
+
+            description:
+                "Master advanced subjects and prepare for major examinations.",
+
+            subjects: [
+
+                {
+                    name: "Physics",
+                    icon: "⚛️",
+                    description: "Explore motion, forces, energy, waves and modern physics.",
+                    progress: 45,
+
+                    topics: [
+                        "Measurement",
+                        "Motion",
+                        "Forces",
+                        "Energy",
+                        "Waves",
+                        "Electricity",
+                        "Modern Physics"
+                    ]
+                },
+
+                {
+                    name: "Chemistry",
+                    icon: "🧪",
+                    description: "Understand atoms, reactions, matter and chemical processes.",
+                    progress: 38,
+
+                    topics: [
+                        "Atomic Structure",
+                        "Periodic Table",
+                        "Chemical Bonding",
+                        "Moles",
+                        "Acids & Bases",
+                        "Organic Chemistry"
+                    ]
+                },
+
+                {
+                    name: "Biology",
+                    icon: "🧬",
+                    description: "Study living organisms, cells, genetics and ecosystems.",
+                    progress: 42,
+
+                    topics: [
+                        "Cells",
+                        "Nutrition",
+                        "Transport",
+                        "Respiration",
+                        "Genetics",
+                        "Ecology"
+                    ]
+                },
+
+                {
+                    name: "Core Mathematics",
+                    icon: "📐",
+                    description: "Build advanced mathematical reasoning and problem-solving skills.",
+                    progress: 34,
+
+                    topics: [
+                        "Algebra",
+                        "Functions",
+                        "Calculus",
+                        "Vectors",
+                        "Statistics",
+                        "Probability"
+                    ]
+                },
+
+                {
+                    name: "English Language",
+                    icon: "📖",
+                    description: "Develop advanced communication and examination skills.",
+                    progress: 50,
+
+                    topics: [
+                        "Comprehension",
+                        "Summary",
+                        "Essay Writing",
+                        "Grammar",
+                        "Oral English",
+                        "Literature"
+                    ]
+                },
+
+                {
+                    name: "ICT",
+                    icon: "💻",
+                    description: "Learn computing concepts, systems and digital technology.",
+                    progress: 31,
+
+                    topics: [
+                        "Computer Architecture",
+                        "Programming",
+                        "Databases",
+                        "Networking",
+                        "Web Development",
+                        "Cybersecurity"
+                    ]
+                }
+
+            ]
+
+        },
+
+
+        "TVET": {
+
+            description:
+                "Develop practical skills and technical knowledge for the future.",
+
+            subjects: [
+
+                {
+                    name: "Technical Mathematics",
+                    icon: "📐",
+                    description: "Apply mathematics to technical and practical problems.",
+                    progress: 25,
+
+                    topics: [
+                        "Algebra",
+                        "Geometry",
+                        "Trigonometry",
+                        "Mensuration",
+                        "Statistics"
+                    ]
+                },
+
+                {
+                    name: "Technical Science",
+                    icon: "⚙️",
+                    description: "Understand scientific principles behind technical work.",
+                    progress: 30,
+
+                    topics: [
+                        "Forces",
+                        "Energy",
+                        "Materials",
+                        "Electricity",
+                        "Heat"
+                    ]
+                },
+
+                {
+                    name: "ICT",
+                    icon: "💻",
+                    description: "Develop practical digital and computer skills.",
+                    progress: 35,
+
+                    topics: [
+                        "Computer Basics",
+                        "Networking",
+                        "Programming",
+                        "Databases",
+                        "Digital Tools"
+                    ]
+                },
+
+                {
+                    name: "Engineering Skills",
+                    icon: "🛠️",
+                    description: "Develop practical engineering and technical knowledge.",
+                    progress: 18,
+
+                    topics: [
+                        "Tools",
+                        "Workshop Safety",
+                        "Technical Drawing",
+                        "Materials",
+                        "Measurement"
+                    ]
+                },
+
+                {
+                    name: "Entrepreneurship",
+                    icon: "💼",
+                    description: "Learn how to develop ideas, businesses and careers.",
+                    progress: 20,
+
+                    topics: [
+                        "Business Ideas",
+                        "Planning",
+                        "Marketing",
+                        "Finance",
+                        "Customer Service"
+                    ]
+                },
+
+                {
+                    name: "Communication Skills",
+                    icon: "🗣️",
+                    description: "Improve professional communication and teamwork.",
+                    progress: 28,
+
+                    topics: [
+                        "Communication",
+                        "Teamwork",
+                        "Presentations",
+                        "Writing",
+                        "Leadership"
+                    ]
+                }
+
+            ]
+
+        }
+
+    };
+
+
+    /* =====================================
+       CURRENT LEVEL
+    ===================================== */
+
+    let currentLevel =
+        localStorage.getItem(
+            "eduvoraEducationLevel"
+        ) || "SHS / SHTS";
+
+
+    let currentSubject = null;
+
+
+    /* =====================================
+       INITIALIZE
+    ===================================== */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            if (!learningData[currentLevel]) {
+
+                currentLevel = "SHS / SHTS";
+
+            }
+
+            updateLevelDisplay();
+
+            renderSubjects();
+
+        }
+    );
+
+
+    /* =====================================
+       LEVEL DISPLAY
+    ===================================== */
+
+    function updateLevelDisplay() {
+
+        const levelPill =
+            document.getElementById("levelPill");
+
+        const breadcrumb =
+            document.getElementById("breadcrumbLevel");
+
+        const description =
+            document.getElementById(
+                "learningDescription"
+            );
+
+
+        levelPill.textContent =
+            "🎓 " + currentLevel;
+
+        breadcrumb.textContent =
+            currentLevel;
+
+        description.textContent =
+            learningData[currentLevel].description;
+
+    }
+
+
+    /* =====================================
+       RENDER SUBJECTS
+    ===================================== */
+
+    function renderSubjects(
+        filteredSubjects = null
+    ) {
+
+        const grid =
+            document.getElementById(
+                "subjectsGrid"
+            );
+
+
+        const subjects =
+            filteredSubjects ||
+            learningData[currentLevel].subjects;
+
+
+        grid.innerHTML = "";
+
+
+        subjects.forEach(
+            function (subject, index) {
+
+                const card =
+                    document.createElement("article");
+
+
+                card.className =
+                    "subject-card";
+
+
+                card.innerHTML = `
+
+                    <div class="subject-icon">
+                        ${subject.icon}
+                    </div>
+
+                    <h3>
+                        ${subject.name}
+                    </h3>
+
+                    <p>
+                        ${subject.description}
+                    </p>
+
+                    <div class="subject-progress">
+
+                        <span
+                            style="width:${subject.progress}%"
+                        ></span>
+
+                    </div>
+
+                    <div class="subject-bottom">
+
+                        <small>
+                            ${subject.progress}% complete
+                        </small>
+
+                        <button
+                            onclick="openTopics(${index})"
+                        >
+                            Explore →
+                        </button>
+
+                    </div>
+
+                `;
+
+
+                /*
+                    Store the subject directly
+                    on the card so searching
+                    doesn't break indexes.
+                */
+
+                card.dataset.subject =
+                    subject.name;
+
+
+                card.querySelector("button")
+                    .onclick =
+                    function () {
+
+                        openTopicsByName(
+                            subject.name
+                        );
+
+                    };
+
+
+                grid.appendChild(card);
+
+            }
+        );
+
+
+        document.getElementById(
+            "subjectCount"
+        ).textContent =
+            subjects.length +
+            (
+                subjects.length === 1
+                    ? " subject"
+                    : " subjects"
+            );
+
+    }
+
+
+    /* =====================================
+       OPEN TOPICS
+    ===================================== */
+
+    function openTopics(index) {
+
+        const subject =
+            learningData[
+                currentLevel
+            ].subjects[index];
+
+
+        if (!subject) return;
+
+
+        openTopicsForSubject(subject);
+
+    }
+
+
+    function openTopicsByName(name) {
+
+        const subject =
+            learningData[
+                currentLevel
+            ].subjects.find(
+                function (item) {
+
+                    return item.name === name;
+
+                }
+            );
+
+
+        if (!subject) return;
+
+
+        openTopicsForSubject(subject);
+
+    }
+
+
+    function openTopicsForSubject(
+        subject
+    ) {
+
+        currentSubject =
+            subject;
+
+
+        const panel =
+            document.getElementById(
+                "topicsPanel"
+            );
+
+        const title =
+            document.getElementById(
+                "topicsTitle"
+            );
+
+        const grid =
+            document.getElementById(
+                "topicsGrid"
+            );
+
+
+        title.textContent =
+            subject.name +
+            " — Topics";
+
+
+        grid.innerHTML = "";
+
+
+        subject.topics.forEach(
+            function (topic, index) {
+
+                const card =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                card.className =
+                    "topic-card";
+
+
+                card.innerHTML = `
+
+                    <strong>
+                        ${topic}
+                    </strong>
+
+                    <small>
+                        Topic ${index + 1}
+                    </small>
+
+                    <span>
+                        Start lesson →
+                    </span>
+
+                `;
+
+
+                card.onclick =
+                    function () {
+
+                        openLesson(
+                            subject,
+                            topic
+                        );
+
+                    };
+
+
+                grid.appendChild(card);
+
+            }
+        );
+
+
+        panel.classList.add("active");
+
+
+        panel.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+
+
+    /* =====================================
+       CLOSE TOPICS
+    ===================================== */
+
+    function closeTopics() {
+
+        document
+            .getElementById("topicsPanel")
+            .classList.remove("active");
+
+        closeLesson();
+
+    }
+
+
+    /* =====================================
+       OPEN LESSON
+    ===================================== */
+
+    function openLesson(
+        subject,
+        topic
+    ) {
+
+        const lesson =
+            document.getElementById(
+                "lessonView"
+            );
+
+
+        document.getElementById(
+            "lessonSubject"
+        ).textContent =
+            subject.name.toUpperCase();
+
+
+        document.getElementById(
+            "lessonTitle"
+        ).textContent =
+            topic;
+
+
+        document.getElementById(
+            "lessonIntro"
+        ).textContent =
+            "Welcome to " +
+            topic +
+            ". This lesson is part of " +
+            subject.name +
+            " for " +
+            currentLevel +
+            ".";
+
+
+        document.getElementById(
+            "lessonContent"
+        ).textContent =
+            "Eduvora will provide a structured explanation, examples, key concepts and practice activities for this topic. The full lesson content system will be connected in the next stages.";
+
+
+        lesson.classList.add("active");
+
+
+        lesson.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+
+
+    /* =====================================
+       CLOSE LESSON
+    ===================================== */
+
+    function closeLesson() {
+
+        document
+            .getElementById("lessonView")
+            .classList.remove("active");
+
+    }
+
+
+    /* =====================================
+       SEARCH SUBJECTS
+    ===================================== */
+
+    function searchSubjects() {
+
+        const search =
+            document.getElementById(
+                "subjectSearch"
+            ).value
+            .toLowerCase()
+            .trim();
+
+
+        const subjects =
+            learningData[
+                currentLevel
+            ].subjects;
+
+
+        if (!search) {
+
+            renderSubjects();
+
+            return;
+
+        }
+
+
+        const filtered =
+            subjects.filter(
+                function (subject) {
+
+                    return (
+                        subject.name
+                            .toLowerCase()
+                            .includes(search)
+                        ||
+                        subject.description
+                            .toLowerCase()
+                            .includes(search)
+                    );
+
+                }
+            );
+
+
+        renderSubjects(filtered);
+
+    }
+
+
+    /* =====================================
+       PRACTICE PLACEHOLDER
+    ===================================== */
+
+    function startPractice() {
+
+        alert(
+            "Practice mode is the next Eduvora stage. The quiz engine will be connected here."
+        );
+
+    }
+
+</script>
+
+</body>
+</html>
