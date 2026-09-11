@@ -4,12 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Eduvora | Student Learning Platform</title>
+<title>Eduvora | Learn. Practice. Level Up.</title>
 
 <meta name="description"
-content="Eduvora helps students learn, practice, track progress and level up.">
+content="Eduvora is a modern learning platform for Ghanaian students. Learn, practice, take quizzes and track your progress.">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -25,8 +26,9 @@ content="Eduvora helps students learn, practice, track progress and level up.">
     --background:#f6f8fc;
     --card:#ffffff;
     --border:#e4e8f0;
-    --success:#18a66b;
-    --warning:#f3a900;
+    --success:#159b67;
+    --danger:#d94848;
+    --warning:#f0a500;
 }
 
 html{
@@ -45,14 +47,19 @@ button{
     cursor:pointer;
 }
 
+button:disabled{
+    cursor:not-allowed;
+}
+
 a{
     text-decoration:none;
     color:inherit;
 }
 
-/* ================================
+
+/* =========================================
    LANDING PAGE
-================================ */
+========================================= */
 
 .navbar{
     height:72px;
@@ -272,27 +279,40 @@ a{
 
 .progress div{
     height:100%;
-    width:72%;
     background:white;
 }
 
-.preview-course{
-    border:1px solid var(--border);
-    border-radius:13px;
-    padding:15px;
+
+/* =========================================
+   GENERAL
+========================================= */
+
+.hidden{
+    display:none !important;
 }
 
-.preview-course small{
-    color:var(--muted);
+.page{
+    display:none;
 }
 
-.preview-course h4{
-    margin:4px 0 8px;
+.page.active{
+    display:block;
 }
 
-/* ================================
+.container{
+    width:min(1180px,calc(100% - 36px));
+    margin:auto;
+}
+
+.section{
+    padding:80px 20px;
+    text-align:center;
+}
+
+
+/* =========================================
    DASHBOARD
-================================ */
+========================================= */
 
 #dashboard{
     display:none;
@@ -415,7 +435,10 @@ a{
     font-weight:800;
 }
 
-/* Stats */
+
+/* =========================================
+   STATS
+========================================= */
 
 .dashboard-stats{
     display:grid;
@@ -456,13 +479,10 @@ a{
     background:#edf2ff;
 }
 
-/* Main dashboard grid */
 
-.dashboard-grid{
-    display:grid;
-    grid-template-columns:1.6fr .9fr;
-    gap:20px;
-}
+/* =========================================
+   CARDS
+========================================= */
 
 .card{
     background:white;
@@ -483,13 +503,29 @@ a{
     font-size:18px;
 }
 
-.card-title a{
+.card-title button{
+    border:none;
+    background:none;
     color:var(--primary);
     font-size:12px;
     font-weight:700;
 }
 
-/* Continue learning */
+
+/* =========================================
+   DASHBOARD GRID
+========================================= */
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:1.6fr .9fr;
+    gap:20px;
+}
+
+
+/* =========================================
+   CONTINUE
+========================================= */
 
 .continue{
     display:flex;
@@ -533,7 +569,6 @@ a{
 }
 
 .course-progress div{
-    width:64%;
     height:100%;
     background:var(--primary);
 }
@@ -548,7 +583,10 @@ a{
     font-size:12px;
 }
 
-/* Subjects */
+
+/* =========================================
+   SUBJECT CARDS
+========================================= */
 
 .subject-grid{
     display:grid;
@@ -583,7 +621,10 @@ a{
     font-size:11px;
 }
 
-/* Quiz */
+
+/* =========================================
+   QUIZ BANNER
+========================================= */
 
 .quiz-banner{
     background:linear-gradient(135deg,#eef2ff,#f5f3ff);
@@ -616,7 +657,10 @@ a{
     font-weight:700;
 }
 
-/* Right side */
+
+/* =========================================
+   LEVEL
+========================================= */
 
 .level-card{
     background:linear-gradient(135deg,var(--primary),var(--accent));
@@ -643,7 +687,10 @@ a{
     color:#dbe1ff;
 }
 
-/* Achievements */
+
+/* =========================================
+   ACHIEVEMENTS
+========================================= */
 
 .achievement-list{
     display:grid;
@@ -675,7 +722,10 @@ a{
     font-size:10px;
 }
 
-/* Recommendation */
+
+/* =========================================
+   RECOMMENDATION
+========================================= */
 
 .recommendation{
     padding:15px;
@@ -694,7 +744,10 @@ a{
     font-size:11px;
 }
 
-/* AI */
+
+/* =========================================
+   AI
+========================================= */
 
 .ai-card{
     background:linear-gradient(135deg,#f0f3ff,#f8f5ff);
@@ -731,15 +784,317 @@ a{
     font-weight:700;
 }
 
-/* Mobile bottom navigation */
 
-.mobile-bottom{
+/* =========================================
+   LEARNING PAGE
+========================================= */
+
+.learning-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.back-button{
+    border:1px solid var(--border);
+    background:white;
+    padding:10px 14px;
+    border-radius:10px;
+    color:var(--primary);
+    font-weight:700;
+}
+
+.page-heading h1{
+    font-size:28px;
+}
+
+.page-heading p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+.topic-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+
+.topic-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:20px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.topic-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 30px rgba(20,40,90,.07);
+}
+
+.topic-number{
+    width:38px;
+    height:38px;
+    display:grid;
+    place-items:center;
+    border-radius:10px;
+    background:#edf2ff;
+    color:var(--primary);
+    font-weight:800;
+    margin-bottom:13px;
+}
+
+.topic-card h3{
+    margin-bottom:5px;
+}
+
+.topic-card p{
+    color:var(--muted);
+    font-size:12px;
+}
+
+.topic-status{
+    margin-top:14px;
+    font-size:11px;
+    font-weight:700;
+    color:var(--primary);
+}
+
+
+/* =========================================
+   LESSON PAGE
+========================================= */
+
+.lesson-layout{
+    display:grid;
+    grid-template-columns:1fr 300px;
+    gap:22px;
+}
+
+.lesson-content{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:17px;
+    padding:30px;
+}
+
+.lesson-label{
+    color:var(--primary);
+    font-size:11px;
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+.lesson-content h1{
+    font-size:34px;
+    margin:6px 0 20px;
+}
+
+.lesson-content h2{
+    font-size:21px;
+    margin:25px 0 10px;
+}
+
+.lesson-content p{
+    color:#4d586a;
+    margin-bottom:13px;
+}
+
+.lesson-note{
+    padding:18px;
+    border-left:4px solid var(--primary);
+    background:#f3f6ff;
+    border-radius:8px;
+    margin:20px 0;
+}
+
+.lesson-example{
+    padding:18px;
+    background:#f8f9fc;
+    border:1px solid var(--border);
+    border-radius:12px;
+    margin:20px 0;
+}
+
+.lesson-sidebar{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:17px;
+    padding:20px;
+    height:max-content;
+}
+
+.lesson-sidebar h3{
+    margin-bottom:15px;
+}
+
+.lesson-action{
+    width:100%;
+    margin-top:10px;
+}
+
+.lesson-complete{
+    margin-top:25px;
+    padding-top:20px;
+    border-top:1px solid var(--border);
+}
+
+
+/* =========================================
+   QUIZ PAGE
+========================================= */
+
+.quiz-container{
+    max-width:800px;
+    margin:auto;
+}
+
+.quiz-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.quiz-progress{
+    height:8px;
+    background:#e8ebf2;
+    border-radius:20px;
+    overflow:hidden;
+    margin-bottom:25px;
+}
+
+.quiz-progress div{
+    height:100%;
+    background:var(--primary);
+    transition:.3s;
+}
+
+.quiz-question{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:28px;
+}
+
+.quiz-question h2{
+    font-size:22px;
+    margin-bottom:20px;
+}
+
+.answer-list{
+    display:grid;
+    gap:11px;
+}
+
+.answer{
+    width:100%;
+    text-align:left;
+    border:1px solid var(--border);
+    background:#fafbfe;
+    padding:15px;
+    border-radius:11px;
+    font-weight:600;
+    transition:.2s;
+}
+
+.answer:hover{
+    border-color:var(--primary);
+    background:#f1f4ff;
+}
+
+.answer.correct{
+    background:#e9f8f1;
+    border-color:#53bf8f;
+    color:#087046;
+}
+
+.answer.wrong{
+    background:#fff0f0;
+    border-color:#e68181;
+    color:#a52222;
+}
+
+.quiz-feedback{
+    margin-top:18px;
+    padding:15px;
+    border-radius:10px;
     display:none;
 }
 
-/* ================================
+.quiz-feedback.show{
+    display:block;
+}
+
+.quiz-feedback.correct{
+    background:#e9f8f1;
+    color:#087046;
+}
+
+.quiz-feedback.wrong{
+    background:#fff0f0;
+    color:#a52222;
+}
+
+.quiz-next{
+    margin-top:18px;
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+.result-card{
+    max-width:600px;
+    margin:50px auto;
+    background:white;
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:40px;
+    text-align:center;
+}
+
+.result-icon{
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    background:#edf2ff;
+    display:grid;
+    place-items:center;
+    font-size:35px;
+    margin:0 auto 20px;
+}
+
+.result-card h1{
+    font-size:32px;
+}
+
+.result-score{
+    font-size:52px;
+    font-weight:900;
+    color:var(--primary);
+    margin:10px 0;
+}
+
+.result-card p{
+    color:var(--muted);
+}
+
+.result-actions{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:25px;
+    flex-wrap:wrap;
+}
+
+
+/* =========================================
    MODAL
-================================ */
+========================================= */
 
 .modal{
     display:none;
@@ -811,9 +1166,57 @@ a{
     font-size:18px;
 }
 
-/* ================================
+
+/* =========================================
+   TOAST
+========================================= */
+
+.toast{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:#172033;
+    color:white;
+    padding:13px 18px;
+    border-radius:10px;
+    font-size:13px;
+    font-weight:600;
+    z-index:1000;
+    transform:translateY(100px);
+    opacity:0;
+    transition:.3s;
+}
+
+.toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+
+/* =========================================
+   MOBILE NAV
+========================================= */
+
+.mobile-bottom{
+    display:none;
+}
+
+
+/* =========================================
    RESPONSIVE
-================================ */
+========================================= */
+
+@media(max-width:1000px){
+
+    .topic-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .lesson-layout{
+        grid-template-columns:1fr;
+    }
+
+}
 
 @media(max-width:900px){
 
@@ -884,6 +1287,7 @@ a{
         display:block;
         font-size:19px;
     }
+
 }
 
 @media(max-width:600px){
@@ -940,43 +1344,87 @@ a{
     .level-options{
         grid-template-columns:1fr;
     }
+
+    .topic-grid{
+        grid-template-columns:1fr;
+    }
+
+    .lesson-content{
+        padding:21px;
+    }
+
+    .lesson-content h1{
+        font-size:27px;
+    }
+
+    .quiz-question{
+        padding:21px;
+    }
+
 }
+
+
+/* =========================================
+   PRINT
+========================================= */
+
+@media print{
+
+    .navbar,
+    .sidebar,
+    .mobile-bottom,
+    button{
+        display:none !important;
+    }
+
+    .lesson-content{
+        border:none;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =================================
+
+<!-- ======================================================
      LANDING PAGE
-================================= -->
+====================================================== -->
 
 <div id="landing">
 
 <header class="navbar">
-    <div class="nav-container">
 
-        <a class="logo" href="#">
-            <div class="logo-icon">E</div>
-            Edu<span>vora</span>
-        </a>
+<div class="nav-container">
 
-        <nav class="nav-links">
-            <a href="#learn">Learn</a>
-            <a href="#features">Features</a>
-            <a href="#premium">Premium</a>
-        </nav>
+<a class="logo" href="#">
+<div class="logo-icon">E</div>
+Edu<span>vora</span>
+</a>
 
-        <div class="nav-buttons">
-            <button class="btn btn-light" onclick="openLogin()">
-                Log in
-            </button>
+<nav class="nav-links">
+<a href="#learn">Learn</a>
+<a href="#features">Features</a>
+<a href="#premium">Premium</a>
+</nav>
 
-            <button class="btn btn-primary" onclick="openLevelModal()">
-                Get Started
-            </button>
-        </div>
+<div class="nav-buttons">
 
-    </div>
+<button class="btn btn-light" onclick="openLogin()">
+Log in
+</button>
+
+<button class="btn btn-primary" onclick="openLevelModal()">
+Get Started
+</button>
+
+</div>
+
+</div>
+
 </header>
 
 
@@ -996,8 +1444,8 @@ Learn smarter.<br>
 </h1>
 
 <p>
-Eduvora brings learning, quizzes, study tools,
-progress tracking and personalized study support
+Eduvora brings lessons, quizzes, study tools,
+progress tracking and personalized learning
 together in one modern platform.
 </p>
 
@@ -1028,47 +1476,50 @@ Explore Features
 
 </div>
 
+
 <div class="preview-stats">
 
 <div class="preview-stat">
 <small>XP</small>
-<strong>2,450</strong>
+<strong id="previewXP">0</strong>
 </div>
 
 <div class="preview-stat">
 <small>Streak</small>
-<strong>7 🔥</strong>
+<strong>1 🔥</strong>
 </div>
 
 <div class="preview-stat">
 <small>Level</small>
-<strong>8</strong>
+<strong id="previewLevel">1</strong>
 </div>
 
 </div>
+
 
 <div class="xp-box">
 
 <div class="xp-row">
-<span>Knowledge Explorer</span>
-<strong>72%</strong>
+<span id="previewRank">Science Beginner</span>
+<strong id="previewPercent">0%</strong>
 </div>
 
 <div class="progress">
-<div></div>
+<div id="previewBar" style="width:0%"></div>
 </div>
 
 </div>
+
 
 <div class="preview-course">
 
-<small>CONTINUE LEARNING</small>
+<small>START LEARNING</small>
 
-<h4>Physics — Motion</h4>
+<h4>Explore your first lesson</h4>
 
-<div style="height:6px;background:#edf0f5;border-radius:20px;">
-<div style="width:64%;height:100%;background:#3157d5;border-radius:20px;"></div>
-</div>
+<p style="font-size:11px;color:#6b7587;">
+Choose a subject and begin earning XP.
+</p>
 
 </div>
 
@@ -1079,36 +1530,40 @@ Explore Features
 </section>
 
 
-<section id="learn" style="background:white;padding:80px 20px;text-align:center;">
+<section id="learn"
+class="section"
+style="background:white;">
 
 <h2 style="font-size:38px;margin-bottom:12px;">
 Learning for every student
 </h2>
 
 <p style="color:#6b7587;max-width:600px;margin:auto;">
-Basic School, JHS, SHS/SHTS and TVET students
-can use Eduvora to learn and practice.
+Eduvora is designed to support students across
+different education levels and subjects.
 </p>
 
 </section>
 
 
-<section id="features" style="padding:80px 20px;text-align:center;">
+<section id="features"
+class="section">
 
 <h2 style="font-size:38px;margin-bottom:12px;">
 Everything you need to learn
 </h2>
 
 <p style="color:#6b7587;max-width:600px;margin:auto;">
-Lessons, quizzes, progress tracking, achievements,
-study tools and personalized learning.
+Lessons, quizzes, XP, progress tracking,
+achievements and study tools.
 </p>
 
 </section>
 
 
 <section id="premium"
-style="padding:80px 20px;background:white;text-align:center;">
+class="section"
+style="background:white;">
 
 <h2 style="font-size:38px;margin-bottom:12px;">
 Eduvora Premium
@@ -1129,13 +1584,16 @@ Explore Premium
 </div>
 
 
-<!-- =================================
+<!-- ======================================================
      DASHBOARD
-================================= -->
+====================================================== -->
 
 <div id="dashboard">
 
 <div class="dashboard-layout">
+
+
+<!-- SIDEBAR -->
 
 <aside class="sidebar">
 
@@ -1145,35 +1603,43 @@ Edu<span>vora</span>
 
 <div class="sidebar-menu">
 
-<button class="sidebar-item active">
+<button class="sidebar-item active"
+onclick="showDashboard()">
 🏠 &nbsp; Dashboard
 </button>
 
-<button class="sidebar-item">
+<button class="sidebar-item"
+onclick="showSubjects()">
 📚 &nbsp; Learn
 </button>
 
-<button class="sidebar-item">
+<button class="sidebar-item"
+onclick="startQuizFromDashboard()">
 🧠 &nbsp; Quiz Arena
 </button>
 
-<button class="sidebar-item">
+<button class="sidebar-item"
+onclick="showProgress()">
 📊 &nbsp; My Progress
 </button>
 
-<button class="sidebar-item">
+<button class="sidebar-item"
+onclick="showAchievements()">
 🏆 &nbsp; Achievements
 </button>
 
-<button class="sidebar-item">
+<button class="sidebar-item"
+onclick="showStudyTools()">
 🛠️ &nbsp; Study Tools
 </button>
 
-<button class="sidebar-item">
+<button class="sidebar-item"
+onclick="showOpportunities()">
 🎓 &nbsp; Opportunities
 </button>
 
-<button class="sidebar-item">
+<button class="sidebar-item"
+onclick="showAI()">
 🤖 &nbsp; AI Study Coach
 </button>
 
@@ -1185,8 +1651,8 @@ Edu<span>vora</span>
 <h4>✨ Go Premium</h4>
 
 <p>
-Unlock unlimited quizzes,
-AI coaching and advanced progress tools.
+Unlock advanced quizzes,
+AI coaching and analytics.
 </p>
 
 <button onclick="showPremium()">
@@ -1198,13 +1664,22 @@ Explore Premium
 </aside>
 
 
+<!-- MAIN -->
+
 <main class="dashboard-main">
+
+
+<!-- DASHBOARD PAGE -->
+
+<div id="dashboardPage" class="page active">
 
 <div class="dashboard-header">
 
 <div>
 
-<h1>Good morning 👋</h1>
+<h1>
+Good morning 👋
+</h1>
 
 <p>
 Ready to continue learning?
@@ -1212,13 +1687,18 @@ Ready to continue learning?
 
 </div>
 
+
 <div class="dashboard-profile">
 
 <div>
+
 <strong>Student</strong>
-<div style="font-size:11px;color:#6b7587;">
-Knowledge Explorer
+
+<div style="font-size:11px;color:#6b7587;"
+id="dashboardRank">
+Science Beginner
 </div>
+
 </div>
 
 <div class="dashboard-avatar">
@@ -1237,11 +1717,18 @@ S
 <div class="stat-card">
 
 <div class="stat-card-top">
+
 <small>TOTAL XP</small>
-<div class="stat-icon">⭐</div>
+
+<div class="stat-icon">
+⭐
 </div>
 
-<strong>2,450</strong>
+</div>
+
+<strong id="xpValue">
+0
+</strong>
 
 </div>
 
@@ -1249,11 +1736,18 @@ S
 <div class="stat-card">
 
 <div class="stat-card-top">
+
 <small>STUDY STREAK</small>
-<div class="stat-icon">🔥</div>
+
+<div class="stat-icon">
+🔥
 </div>
 
-<strong>7 days</strong>
+</div>
+
+<strong id="streakValue">
+1 day
+</strong>
 
 </div>
 
@@ -1261,11 +1755,18 @@ S
 <div class="stat-card">
 
 <div class="stat-card-top">
+
 <small>QUIZZES</small>
-<div class="stat-icon">🧠</div>
+
+<div class="stat-icon">
+🧠
 </div>
 
-<strong>42</strong>
+</div>
+
+<strong id="quizValue">
+0
+</strong>
 
 </div>
 
@@ -1273,11 +1774,18 @@ S
 <div class="stat-card">
 
 <div class="stat-card-top">
-<small>SUBJECTS</small>
-<div class="stat-icon">📚</div>
+
+<small>LESSONS</small>
+
+<div class="stat-icon">
+📚
 </div>
 
-<strong>6</strong>
+</div>
+
+<strong id="lessonValue">
+0
+</strong>
 
 </div>
 
@@ -1286,18 +1794,23 @@ S
 
 <div class="dashboard-grid">
 
+
 <div>
 
 
-<!-- CONTINUE LEARNING -->
+<!-- CONTINUE -->
 
 <div class="card">
 
 <div class="card-title">
 
-<h2>Continue Learning</h2>
+<h2>
+Continue Learning
+</h2>
 
-<a href="#">View all</a>
+<button onclick="showSubjects()">
+View all
+</button>
 
 </div>
 
@@ -1312,15 +1825,21 @@ S
 
 <small>PHYSICS</small>
 
-<h3>Motion and Forces</h3>
+<h3>
+Motion and Forces
+</h3>
 
 <div class="course-progress">
-<div></div>
+
+<div id="physicsProgress"
+style="width:0%">
 </div>
 
 </div>
 
-<button onclick="startLesson()">
+</div>
+
+<button onclick="openTopic('physics',0)">
 Continue
 </button>
 
@@ -1335,65 +1854,91 @@ Continue
 
 <div class="card-title">
 
-<h2>My Subjects</h2>
+<h2>
+My Subjects
+</h2>
 
-<a href="#">All subjects</a>
+<button onclick="showSubjects()">
+All subjects
+</button>
 
 </div>
 
 
 <div class="subject-grid">
 
-<div class="subject-card" onclick="subjectMessage('Mathematics')">
+
+<div class="subject-card"
+onclick="showSubjectTopics('mathematics')">
 
 <div class="subject-icon">
 📐
 </div>
 
-<h3>Mathematics</h3>
+<h3>
+Mathematics
+</h3>
 
-<p>24 lessons available</p>
+<p>
+Numbers, algebra, geometry & more
+</p>
 
 </div>
 
 
-<div class="subject-card" onclick="subjectMessage('Physics')">
+<div class="subject-card"
+onclick="showSubjectTopics('physics')">
 
 <div class="subject-icon">
 ⚛️
 </div>
 
-<h3>Physics</h3>
+<h3>
+Physics
+</h3>
 
-<p>18 lessons available</p>
+<p>
+Motion, forces, energy & more
+</p>
 
 </div>
 
 
-<div class="subject-card" onclick="subjectMessage('Chemistry')">
+<div class="subject-card"
+onclick="showSubjectTopics('chemistry')">
 
 <div class="subject-icon">
 🧪
 </div>
 
-<h3>Chemistry</h3>
+<h3>
+Chemistry
+</h3>
 
-<p>21 lessons available</p>
+<p>
+Matter, atoms, reactions & more
+</p>
 
 </div>
 
 
-<div class="subject-card" onclick="subjectMessage('Biology')">
+<div class="subject-card"
+onclick="showSubjectTopics('biology')">
 
 <div class="subject-icon">
 🧬
 </div>
 
-<h3>Biology</h3>
+<h3>
+Biology
+</h3>
 
-<p>20 lessons available</p>
+<p>
+Cells, organisms, systems & more
+</p>
 
 </div>
+
 
 </div>
 
@@ -1406,24 +1951,32 @@ Continue
 
 <div class="card-title">
 
-<h2>🧠 Quiz Arena</h2>
+<h2>
+🧠 Quiz Arena
+</h2>
 
-<a href="#">View quizzes</a>
+<button onclick="startQuizFromDashboard()">
+Practice
+</button>
 
 </div>
 
 
 <div class="quiz-banner">
 
-<small>DAILY CHALLENGE</small>
+<small>
+DAILY CHALLENGE
+</small>
 
-<h3>Can you score 10/10?</h3>
+<h3>
+Test what you know.
+</h3>
 
 <p>
-Test your knowledge and earn XP.
+Answer questions, earn XP and improve your knowledge.
 </p>
 
-<button onclick="startQuiz()">
+<button onclick="startQuizFromDashboard()">
 Start Challenge →
 </button>
 
@@ -1442,41 +1995,62 @@ Start Challenge →
 
 <div class="level-card">
 
-<small>CURRENT LEVEL</small>
+<small>
+CURRENT LEVEL
+</small>
 
-<h2>Level 8</h2>
+<h2 id="levelValue">
+Level 1
+</h2>
 
-<strong>Knowledge Explorer</strong>
+<strong id="rankValue">
+Science Beginner
+</strong>
 
 <div class="progress">
-<div style="width:72%;"></div>
+
+<div id="levelProgress"
+style="width:0%">
 </div>
 
-<p>
-550 XP until Level 9
+</div>
+
+<p id="levelText">
+200 XP until Level 2
 </p>
 
 </div>
 
 
-<!-- RECOMMENDED -->
+<!-- RECOMMENDATION -->
 
 <div class="card">
 
 <div class="card-title">
 
-<h2>🎯 Recommended</h2>
+<h2>
+🎯 Recommended
+</h2>
 
 </div>
 
 <div class="recommendation">
 
-<strong>Review: Electricity</strong>
+<strong>
+Start with Motion
+</strong>
 
 <p>
-Your recent quizzes suggest
-this topic needs more practice.
+Learn the basics of motion and test
+your understanding with a quiz.
 </p>
+
+<button
+class="btn btn-primary"
+style="margin-top:12px;font-size:11px;"
+onclick="openTopic('physics',0)">
+Start lesson
+</button>
 
 </div>
 
@@ -1489,9 +2063,13 @@ this topic needs more practice.
 
 <div class="card-title">
 
-<h2>🏆 Achievements</h2>
+<h2>
+🏆 Achievements
+</h2>
 
-<a href="#">View all</a>
+<button onclick="showAchievements()">
+View all
+</button>
 
 </div>
 
@@ -1500,12 +2078,17 @@ this topic needs more practice.
 <div class="achievement">
 
 <div class="achievement-icon">
-🔥
+🚀
 </div>
 
 <div>
-<strong>7-Day Streak</strong>
-<small>Studied for 7 days</small>
+<strong>
+First Steps
+</strong>
+
+<small>
+Complete your first lesson
+</small>
 </div>
 
 </div>
@@ -1514,12 +2097,17 @@ this topic needs more practice.
 <div class="achievement">
 
 <div class="achievement-icon">
-🎯
+🧠
 </div>
 
 <div>
-<strong>Quiz Starter</strong>
-<small>Completed 10 quizzes</small>
+<strong>
+Quiz Starter
+</strong>
+
+<small>
+Complete your first quiz
+</small>
 </div>
 
 </div>
@@ -1528,12 +2116,17 @@ this topic needs more practice.
 <div class="achievement">
 
 <div class="achievement-icon">
-⚡
+⭐
 </div>
 
 <div>
-<strong>Fast Learner</strong>
-<small>Earned 1,000 XP</small>
+<strong>
+XP Explorer
+</strong>
+
+<small>
+Earn 100 XP
+</small>
 </div>
 
 </div>
@@ -1551,11 +2144,13 @@ this topic needs more practice.
 🤖
 </div>
 
-<h3>AI Study Coach</h3>
+<h3>
+AI Study Coach
+</h3>
 
 <p>
-Get personalized explanations,
-study recommendations and learning plans.
+Get personalized explanations and
+study recommendations.
 </p>
 
 <button onclick="showAI()">
@@ -1568,6 +2163,732 @@ Try Study Coach
 
 </div>
 
+</div>
+
+
+<!-- SUBJECTS PAGE -->
+
+<div id="subjectsPage" class="page">
+
+<div class="learning-header">
+
+<button class="back-button"
+onclick="showDashboard()">
+← Dashboard
+</button>
+
+<div class="page-heading">
+
+<h1>
+Subjects
+</h1>
+
+<p>
+Choose a subject to start learning.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="subject-grid"
+style="grid-template-columns:repeat(3,1fr);">
+
+
+<div class="subject-card"
+onclick="showSubjectTopics('mathematics')">
+
+<div class="subject-icon">
+📐
+</div>
+
+<h3>Mathematics</h3>
+
+<p>Explore mathematical concepts and practice.</p>
+
+</div>
+
+
+<div class="subject-card"
+onclick="showSubjectTopics('physics')">
+
+<div class="subject-icon">
+⚛️
+</div>
+
+<h3>Physics</h3>
+
+<p>Understand the physical world around you.</p>
+
+</div>
+
+
+<div class="subject-card"
+onclick="showSubjectTopics('chemistry')">
+
+<div class="subject-icon">
+🧪
+</div>
+
+<h3>Chemistry</h3>
+
+<p>Explore matter, atoms and reactions.</p>
+
+</div>
+
+
+<div class="subject-card"
+onclick="showSubjectTopics('biology')">
+
+<div class="subject-icon">
+🧬
+</div>
+
+<h3>Biology</h3>
+
+<p>Study living things and their systems.</p>
+
+</div>
+
+
+<div class="subject-card"
+onclick="showSubjectTopics('english')">
+
+<div class="subject-icon">
+📖
+</div>
+
+<h3>English Language</h3>
+
+<p>Build reading, writing and communication skills.</p>
+
+</div>
+
+
+<div class="subject-card"
+onclick="showSubjectTopics('ict')">
+
+<div class="subject-icon">
+💻
+</div>
+
+<h3>ICT</h3>
+
+<p>Learn digital technology and computing.</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- TOPICS PAGE -->
+
+<div id="topicsPage" class="page">
+
+<div class="learning-header">
+
+<button class="back-button"
+onclick="showSubjects()">
+← Subjects
+</button>
+
+<div class="page-heading">
+
+<h1 id="topicsTitle">
+Topics
+</h1>
+
+<p id="topicsSubtitle">
+Choose a topic to begin.
+</p>
+
+</div>
+
+</div>
+
+
+<div id="topicGrid"
+class="topic-grid">
+</div>
+
+</div>
+
+
+<!-- LESSON PAGE -->
+
+<div id="lessonPage" class="page">
+
+<div class="learning-header">
+
+<button class="back-button"
+onclick="backToTopics()">
+← Topics
+</button>
+
+<div class="page-heading">
+
+<h1>
+Lesson
+</h1>
+
+<p id="lessonBreadcrumb">
+Learning
+</p>
+
+</div>
+
+</div>
+
+
+<div class="lesson-layout">
+
+<article class="lesson-content">
+
+<div class="lesson-label"
+id="lessonSubject">
+PHYSICS
+</div>
+
+<h1 id="lessonTitle">
+Motion
+</h1>
+
+
+<div id="lessonBody">
+</div>
+
+
+<div class="lesson-complete">
+
+<button class="btn btn-primary"
+onclick="completeLesson()">
+✓ Mark Lesson Complete
+</button>
+
+<button class="btn btn-light"
+onclick="startCurrentQuiz()">
+Take Quiz →
+</button>
+
+</div>
+
+</article>
+
+
+<aside class="lesson-sidebar">
+
+<h3>
+Lesson Progress
+</h3>
+
+<div style="height:8px;background:#e9ecf2;border-radius:20px;overflow:hidden;">
+
+<div id="lessonProgressBar"
+style="width:0%;height:100%;background:#3157d5;">
+</div>
+
+</div>
+
+<p id="lessonProgressText"
+style="font-size:12px;color:#6b7587;margin-top:8px;">
+0% complete
+</p>
+
+
+<div style="margin-top:25px;">
+
+<strong>
+What you'll learn
+</strong>
+
+<ul id="lessonObjectives"
+style="padding-left:18px;margin-top:10px;color:#6b7587;font-size:12px;">
+</ul>
+
+</div>
+
+</aside>
+
+</div>
+
+</div>
+
+
+<!-- QUIZ PAGE -->
+
+<div id="quizPage" class="page">
+
+<div class="learning-header">
+
+<button class="back-button"
+onclick="backToTopics()">
+← Exit Quiz
+</button>
+
+<div class="page-heading">
+
+<h1>
+Quiz Arena
+</h1>
+
+<p id="quizSubjectTitle">
+Practice your knowledge.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="quiz-container">
+
+<div class="quiz-top">
+
+<strong id="questionCounter">
+Question 1 of 5
+</strong>
+
+<strong id="quizScoreText">
+Score: 0
+</strong>
+
+</div>
+
+
+<div class="quiz-progress">
+
+<div id="quizProgressBar"
+style="width:20%">
+</div>
+
+</div>
+
+
+<div class="quiz-question">
+
+<h2 id="questionText">
+Question
+</h2>
+
+
+<div id="answerList"
+class="answer-list">
+</div>
+
+
+<div id="quizFeedback"
+class="quiz-feedback">
+</div>
+
+
+<button id="nextQuestionButton"
+class="btn btn-primary quiz-next"
+style="display:none;"
+onclick="nextQuestion()">
+Next Question →
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- RESULT PAGE -->
+
+<div id="resultPage" class="page">
+
+<div class="result-card">
+
+<div class="result-icon">
+🏆
+</div>
+
+<h1>
+Quiz Complete!
+</h1>
+
+<div class="result-score"
+id="finalScore">
+0/5
+</div>
+
+<p id="finalMessage">
+Great effort!
+</p>
+
+<p style="margin-top:8px;">
+⭐ <strong id="earnedXP">0</strong> XP earned
+</p>
+
+<div class="result-actions">
+
+<button class="btn btn-primary"
+onclick="showDashboard()">
+Back to Dashboard
+</button>
+
+<button class="btn btn-light"
+onclick="startCurrentQuiz()">
+Try Again
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SIMPLE OTHER PAGES -->
+
+<div id="progressPage" class="page">
+
+<div class="learning-header">
+
+<button class="back-button"
+onclick="showDashboard()">
+← Dashboard
+</button>
+
+<div class="page-heading">
+
+<h1>
+My Progress
+</h1>
+
+<p>
+Track your learning journey.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+📊 Learning Overview
+</h2>
+
+<div style="margin-top:20px;">
+
+<p>
+Total XP
+</p>
+
+<h2 id="progressXP"
+style="color:#3157d5;margin-bottom:18px;">
+0 XP
+</h2>
+
+<p>
+Lessons completed
+</p>
+
+<h2 id="progressLessons"
+style="margin-bottom:18px;">
+0
+</h2>
+
+<p>
+Quizzes completed
+</p>
+
+<h2 id="progressQuizzes">
+0
+</h2>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="achievementsPage" class="page">
+
+<div class="learning-header">
+
+<button class="back-button"
+onclick="showDashboard()">
+← Dashboard
+</button>
+
+<div class="page-heading">
+
+<h1>
+Achievements
+</h1>
+
+<p>
+Milestones you can unlock.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="achievement-list">
+
+<div class="achievement">
+
+<div class="achievement-icon">
+🚀
+</div>
+
+<div>
+<strong>First Steps</strong>
+<small>Complete your first lesson</small>
+</div>
+
+</div>
+
+
+<div class="achievement">
+
+<div class="achievement-icon">
+🧠
+</div>
+
+<div>
+<strong>Quiz Starter</strong>
+<small>Complete your first quiz</small>
+</div>
+
+</div>
+
+
+<div class="achievement">
+
+<div class="achievement-icon">
+⭐
+</div>
+
+<div>
+<strong>XP Explorer</strong>
+<small>Earn 100 XP</small>
+</div>
+
+</div>
+
+
+<div class="achievement">
+
+<div class="achievement-icon">
+🔥
+</div>
+
+<div>
+<strong>Consistency</strong>
+<small>Keep learning every day</small>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="toolsPage" class="page">
+
+<div class="learning-header">
+
+<button class="back-button"
+onclick="showDashboard()">
+← Dashboard
+</button>
+
+<div class="page-heading">
+
+<h1>
+Study Tools
+</h1>
+
+<p>
+Useful tools for students.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="subject-grid">
+
+<div class="card">
+
+<h2>
+🧮 GPA Calculator
+</h2>
+
+<p style="color:#6b7587;font-size:13px;margin:10px 0 15px;">
+Calculate your GPA quickly.
+</p>
+
+<button class="btn btn-primary"
+onclick="alert('GPA Calculator will be built in the next Study Tools stage.')">
+Open
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+⏱️ Study Timer
+</h2>
+
+<p style="color:#6b7587;font-size:13px;margin:10px 0 15px;">
+Focus during your study sessions.
+</p>
+
+<button class="btn btn-primary"
+onclick="alert('Study Timer will be built in the next Study Tools stage.')">
+Open
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+📅 Exam Countdown
+</h2>
+
+<p style="color:#6b7587;font-size:13px;margin:10px 0 15px;">
+Keep track of important exams.
+</p>
+
+<button class="btn btn-primary"
+onclick="alert('Exam Countdown will be built in the next Study Tools stage.')">
+Open
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="opportunitiesPage" class="page">
+
+<div class="learning-header">
+
+<button class="back-button"
+onclick="showDashboard()">
+← Dashboard
+</button>
+
+<div class="page-heading">
+
+<h1>
+Opportunities
+</h1>
+
+<p>
+Discover useful opportunities for students.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+🎓 Student Opportunities
+</h2>
+
+<p style="color:#6b7587;margin-top:10px;">
+Scholarships, competitions, learning programs
+and other opportunities can appear here.
+</p>
+
+<div style="margin-top:20px;padding:18px;background:#f7f9fd;border-radius:12px;">
+
+<strong>
+Opportunity Center Coming Soon
+</strong>
+
+<p style="color:#6b7587;font-size:12px;margin-top:5px;">
+We'll build a proper opportunity database later.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="aiPage" class="page">
+
+<div class="learning-header">
+
+<button class="back-button"
+onclick="showDashboard()">
+← Dashboard
+</button>
+
+<div class="page-heading">
+
+<h1>
+AI Study Coach
+</h1>
+
+<p>
+Your future personalized study assistant.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="card ai-card">
+
+<div class="ai-icon">
+🤖
+</div>
+
+<h2>
+Your AI Study Coach
+</h2>
+
+<p style="margin-top:8px;color:#6b7587;">
+Soon, Eduvora will be able to help you understand
+difficult topics, create study plans and practice
+questions.
+</p>
+
+<button class="btn btn-primary"
+style="margin-top:18px;"
+onclick="alert('AI Study Coach will be connected after the core learning system is complete.')">
+Coming Soon
+</button>
+
+</div>
+
+</div>
+
+
 </main>
 
 </div>
@@ -1577,27 +2898,27 @@ Try Study Coach
 
 <div class="mobile-bottom">
 
-<button>
+<button onclick="showDashboard()">
 <span>🏠</span>
 Home
 </button>
 
-<button>
+<button onclick="showSubjects()">
 <span>📚</span>
 Learn
 </button>
 
-<button>
+<button onclick="startQuizFromDashboard()">
 <span>🧠</span>
 Quiz
 </button>
 
-<button>
+<button onclick="showStudyTools()">
 <span>🛠️</span>
 Tools
 </button>
 
-<button>
+<button onclick="showProfileMessage()">
 <span>👤</span>
 Profile
 </button>
@@ -1607,30 +2928,39 @@ Profile
 </div>
 
 
-<!-- =================================
-     LEVEL MODAL
-================================= -->
+<!-- LEVEL MODAL -->
 
 <div class="modal" id="levelModal">
 
 <div class="modal-box">
 
-<button class="close" onclick="closeLevelModal()">×</button>
+<button class="close"
+onclick="closeLevelModal()">
+×
+</button>
 
-<h2>Let's get started 🚀</h2>
+<h2>
+Let's get started 🚀
+</h2>
 
 <p>
 Choose your education level to personalize
 your learning experience.
 </p>
 
+
 <div class="level-options">
 
 <button class="level-option"
 onclick="enterDashboard('Basic School')">
 
-<strong>📘 Basic School</strong>
-<small>Primary learning</small>
+<strong>
+📘 Basic School
+</strong>
+
+<small>
+Primary learning
+</small>
 
 </button>
 
@@ -1638,8 +2968,13 @@ onclick="enterDashboard('Basic School')">
 <button class="level-option"
 onclick="enterDashboard('JHS')">
 
-<strong>🎓 JHS</strong>
-<small>Junior High School</small>
+<strong>
+🎓 JHS
+</strong>
+
+<small>
+Junior High School
+</small>
 
 </button>
 
@@ -1647,8 +2982,13 @@ onclick="enterDashboard('JHS')">
 <button class="level-option"
 onclick="enterDashboard('SHS / SHTS')">
 
-<strong>🔬 SHS / SHTS</strong>
-<small>Senior High School</small>
+<strong>
+🔬 SHS / SHTS
+</strong>
+
+<small>
+Senior High School
+</small>
 
 </button>
 
@@ -1656,8 +2996,13 @@ onclick="enterDashboard('SHS / SHTS')">
 <button class="level-option"
 onclick="enterDashboard('TVET')">
 
-<strong>🛠️ TVET</strong>
-<small>Technical & vocational</small>
+<strong>
+🛠️ TVET
+</strong>
+
+<small>
+Technical & vocational
+</small>
 
 </button>
 
@@ -1668,11 +3013,1132 @@ onclick="enterDashboard('TVET')">
 </div>
 
 
+<!-- TOAST -->
+
+<div id="toast"
+class="toast">
+Message
+</div>
+
+
 <script>
 
-/* ===============================
-   LEVEL SELECTION
-================================ */
+/* =========================================================
+   EDUVORA STAGE 3
+   Learning + Topics + Lessons + Quizzes + XP
+========================================================= */
+
+
+/* =========================================================
+   CURRICULUM DATA
+========================================================= */
+
+const subjects = {
+
+mathematics:{
+    name:"Mathematics",
+    icon:"📐",
+    topics:[
+        {
+            title:"Number Systems",
+            description:"Understand natural numbers, integers, fractions and decimals.",
+            objectives:[
+                "Identify different types of numbers.",
+                "Compare and order numbers.",
+                "Use numbers in everyday calculations."
+            ],
+            lessonTitle:"Introduction to Number Systems",
+            lesson:`
+                <h2>What is a number?</h2>
+
+                <p>
+                Numbers are symbols we use to represent quantities,
+                measurements and values. Mathematics uses different
+                types of numbers for different purposes.
+                </p>
+
+                <h2>Natural Numbers</h2>
+
+                <p>
+                Natural numbers are the counting numbers:
+                1, 2, 3, 4, 5 and so on.
+                </p>
+
+                <div class="lesson-note">
+                <strong>Remember:</strong>
+                Natural numbers are commonly used when counting objects.
+                </div>
+
+                <h2>Integers</h2>
+
+                <p>
+                Integers include positive numbers, negative numbers
+                and zero. Examples include -3, -2, -1, 0, 1, 2 and 3.
+                </p>
+
+                <div class="lesson-example">
+                <strong>Example</strong>
+                <p>
+                A temperature of 5°C can be represented as +5,
+                while a temperature of 5°C below zero can be represented as -5°C.
+                </p>
+                </div>
+            `,
+            quiz:[
+                {
+                    question:"Which of these is an integer?",
+                    answers:["2.5","-7","1/2","3.4"],
+                    correct:1
+                },
+                {
+                    question:"Which number is a natural number?",
+                    answers:["-4","0.5","8","-1"],
+                    correct:2
+                },
+                {
+                    question:"What is the purpose of numbers?",
+                    answers:[
+                        "Only measuring temperature",
+                        "Representing quantities and values",
+                        "Only drawing shapes",
+                        "Only writing words"
+                    ],
+                    correct:1
+                },
+                {
+                    question:"Which number is neither positive nor negative?",
+                    answers:["-1","1","0","10"],
+                    correct:2
+                },
+                {
+                    question:"Which is a negative integer?",
+                    answers:["9","0","-6","2.5"],
+                    correct:2
+                }
+            ]
+        },
+
+        {
+            title:"Algebraic Expressions",
+            description:"Learn variables, coefficients and simple expressions.",
+            objectives:[
+                "Understand variables.",
+                "Identify coefficients and constants.",
+                "Simplify simple expressions."
+            ],
+            lessonTitle:"Understanding Algebraic Expressions",
+            lesson:`
+                <h2>What is algebra?</h2>
+
+                <p>
+                Algebra is a branch of mathematics that uses letters
+                and symbols to represent numbers and relationships.
+                </p>
+
+                <h2>Variables</h2>
+
+                <p>
+                A variable is a letter or symbol that represents
+                an unknown or changing value.
+                </p>
+
+                <div class="lesson-example">
+                <strong>Example</strong>
+                <p>
+                In <strong>3x + 5</strong>, x is the variable,
+                3 is the coefficient and 5 is the constant.
+                </p>
+                </div>
+
+                <h2>Like Terms</h2>
+
+                <p>
+                Like terms contain the same variable raised to
+                the same power. For example, 3x and 5x are like terms.
+                </p>
+            `,
+            quiz:[
+                {
+                    question:"In 4x + 7, what is x?",
+                    answers:["Constant","Variable","Coefficient","Operator"],
+                    correct:1
+                },
+                {
+                    question:"What is the coefficient of x in 5x?",
+                    answers:["x","1","5","0"],
+                    correct:2
+                },
+                {
+                    question:"Which pair contains like terms?",
+                    answers:["3x and 4x","3x and 4y","x and x²","2a and 3b"],
+                    correct:0
+                },
+                {
+                    question:"What is the constant in 2x + 9?",
+                    answers:["2","x","9","11"],
+                    correct:2
+                },
+                {
+                    question:"Which expression contains a variable?",
+                    answers:["8 + 2","5 × 4","3x + 2","10"],
+                    correct:2
+                }
+            ]
+        },
+
+        {
+            title:"Geometry",
+            description:"Explore angles, shapes, perimeter and area.",
+            objectives:[
+                "Identify common geometric shapes.",
+                "Understand basic angles.",
+                "Calculate simple perimeter and area."
+            ],
+            lessonTitle:"Introduction to Geometry",
+            lesson:`
+                <h2>What is geometry?</h2>
+
+                <p>
+                Geometry is the branch of mathematics concerned with
+                shapes, sizes, positions and properties of objects.
+                </p>
+
+                <h2>Angles</h2>
+
+                <p>
+                An angle is formed when two lines or rays meet at a point.
+                </p>
+
+                <div class="lesson-note">
+                A right angle measures 90°.
+                </div>
+
+                <h2>Perimeter</h2>
+
+                <p>
+                The perimeter is the total distance around the outside
+                of a two-dimensional shape.
+                </p>
+            `,
+            quiz:[
+                {
+                    question:"How many degrees are in a right angle?",
+                    answers:["45°","90°","180°","360°"],
+                    correct:1
+                },
+                {
+                    question:"What does perimeter measure?",
+                    answers:["Space inside a shape","Distance around a shape","Weight","Temperature"],
+                    correct:1
+                },
+                {
+                    question:"Which shape has three sides?",
+                    answers:["Square","Triangle","Circle","Rectangle"],
+                    correct:1
+                },
+                {
+                    question:"How many sides does a square have?",
+                    answers:["3","4","5","6"],
+                    correct:1
+                },
+                {
+                    question:"A straight angle measures:",
+                    answers:["45°","90°","180°","360°"],
+                    correct:2
+                }
+            ]
+        }
+    ]
+},
+
+
+physics:{
+    name:"Physics",
+    icon:"⚛️",
+    topics:[
+        {
+            title:"Motion and Forces",
+            description:"Understand motion, speed, velocity and forces.",
+            objectives:[
+                "Define motion.",
+                "Distinguish speed from velocity.",
+                "Understand the effect of forces."
+            ],
+            lessonTitle:"Introduction to Motion",
+            lesson:`
+                <h2>What is motion?</h2>
+
+                <p>
+                Motion is the change in position of an object with time
+                relative to a reference point.
+                </p>
+
+                <div class="lesson-note">
+                <strong>Example:</strong>
+                A car moving along a road is in motion because its
+                position changes with time.
+                </div>
+
+                <h2>Speed</h2>
+
+                <p>
+                Speed tells us how quickly an object covers a distance.
+                </p>
+
+                <div class="lesson-example">
+                <strong>Formula</strong>
+                <p>
+                Speed = Distance ÷ Time
+                </p>
+                </div>
+
+                <h2>Force</h2>
+
+                <p>
+                A force is a push or pull that can change the motion
+                or shape of an object.
+                </p>
+
+                <p>
+                Forces can make an object start moving, stop moving,
+                speed up, slow down or change direction.
+                </p>
+            `,
+            quiz:[
+                {
+                    question:"What is motion?",
+                    answers:[
+                        "Change in position with time",
+                        "Change in colour",
+                        "Change in temperature only",
+                        "A type of material"
+                    ],
+                    correct:0
+                },
+                {
+                    question:"What is the formula for speed?",
+                    answers:[
+                        "Time × Distance",
+                        "Distance ÷ Time",
+                        "Distance + Time",
+                        "Time ÷ Distance"
+                    ],
+                    correct:1
+                },
+                {
+                    question:"A force can be described as a:",
+                    answers:[
+                        "Push or pull",
+                        "Temperature",
+                        "Colour",
+                        "Volume"
+                    ],
+                    correct:0
+                },
+                {
+                    question:"Which quantity tells how quickly distance is covered?",
+                    answers:["Mass","Speed","Density","Volume"],
+                    correct:1
+                },
+                {
+                    question:"A force can change an object's:",
+                    answers:[
+                        "Motion",
+                        "Name",
+                        "Colour only",
+                        "Age"
+                    ],
+                    correct:0
+                }
+            ]
+        },
+
+        {
+            title:"Energy",
+            description:"Learn about energy, work and common energy forms.",
+            objectives:[
+                "Define energy.",
+                "Identify common forms of energy.",
+                "Understand energy transfer."
+            ],
+            lessonTitle:"Understanding Energy",
+            lesson:`
+                <h2>What is energy?</h2>
+
+                <p>
+                Energy is the capacity to do work or cause change.
+                </p>
+
+                <h2>Forms of Energy</h2>
+
+                <p>
+                Common forms include kinetic energy, potential energy,
+                thermal energy, chemical energy, electrical energy
+                and light energy.
+                </p>
+
+                <div class="lesson-note">
+                <strong>Kinetic energy</strong> is associated with motion.
+                </div>
+
+                <h2>Energy Transfer</h2>
+
+                <p>
+                Energy can be transferred from one object or system
+                to another and can change from one form to another.
+                </p>
+            `,
+            quiz:[
+                {
+                    question:"Energy is the capacity to:",
+                    answers:["Do work or cause change","Create matter","Stop time","Change age"],
+                    correct:0
+                },
+                {
+                    question:"Kinetic energy is associated with:",
+                    answers:["Motion","Colour","Temperature only","Sound only"],
+                    correct:0
+                },
+                {
+                    question:"Which is a form of energy?",
+                    answers:["Electrical","Length","Shape","Size"],
+                    correct:0
+                },
+                {
+                    question:"Energy can:",
+                    answers:["Only disappear","Only increase","Be transferred and transformed","Never change"],
+                    correct:2
+                },
+                {
+                    question:"Chemical energy can be stored in:",
+                    answers:["Food","Empty space","A shadow","A geometric angle"],
+                    correct:0
+                }
+            ]
+        },
+
+        {
+            title:"Electricity",
+            description:"Understand current, voltage and simple circuits.",
+            objectives:[
+                "Understand electric current.",
+                "Identify basic circuit components.",
+                "Understand simple electrical circuits."
+            ],
+            lessonTitle:"Introduction to Electricity",
+            lesson:`
+                <h2>Electricity</h2>
+
+                <p>
+                Electricity involves the presence and movement of
+                electric charge.
+                </p>
+
+                <h2>Electric Current</h2>
+
+                <p>
+                Electric current is the rate at which electric charge
+                flows through a circuit.
+                </p>
+
+                <div class="lesson-example">
+                <strong>Simple Circuit</strong>
+                <p>
+                A simple circuit may contain a cell or battery,
+                connecting wires, a switch and a lamp.
+                </p>
+                </div>
+
+                <h2>Complete Circuit</h2>
+
+                <p>
+                For a lamp in a simple circuit to light, there must
+                be a complete conducting path.
+                </p>
+            `,
+            quiz:[
+                {
+                    question:"Electric current involves the flow of:",
+                    answers:["Electric charge","Water only","Air only","Light only"],
+                    correct:0
+                },
+                {
+                    question:"Which component can open or close a circuit?",
+                    answers:["Switch","Lamp","Wire only","Table"],
+                    correct:0
+                },
+                {
+                    question:"A simple circuit needs a conducting:",
+                    answers:["Path","Colour","Shape","Sound"],
+                    correct:0
+                },
+                {
+                    question:"Which provides electrical energy in a basic circuit?",
+                    answers:["Cell","Ruler","Cup","Book"],
+                    correct:0
+                },
+                {
+                    question:"A lamp lights when the circuit is:",
+                    answers:["Open","Complete","Broken","Disconnected"],
+                    correct:1
+                }
+            ]
+        }
+    ]
+},
+
+
+chemistry:{
+    name:"Chemistry",
+    icon:"🧪",
+    topics:[
+        {
+            title:"Matter",
+            description:"Learn about solids, liquids and gases.",
+            objectives:[
+                "Define matter.",
+                "Identify states of matter.",
+                "Describe basic properties of each state."
+            ],
+            lessonTitle:"States of Matter",
+            lesson:`
+                <h2>What is matter?</h2>
+
+                <p>
+                Matter is anything that has mass and occupies space.
+                </p>
+
+                <h2>States of Matter</h2>
+
+                <p>
+                The common states of matter are solids, liquids and gases.
+                </p>
+
+                <div class="lesson-example">
+                <strong>Solid:</strong> has a definite shape and volume.
+                <br><br>
+                <strong>Liquid:</strong> has a definite volume but takes
+                the shape of its container.
+                <br><br>
+                <strong>Gas:</strong> has no fixed shape or fixed volume.
+                </div>
+            `,
+            quiz:[
+                {
+                    question:"Matter has:",
+                    answers:["Mass and occupies space","Only colour","Only shape","No mass"],
+                    correct:0
+                },
+                {
+                    question:"Which has a definite shape?",
+                    answers:["Gas","Liquid","Solid","Steam"],
+                    correct:2
+                },
+                {
+                    question:"A liquid:",
+                    answers:[
+                        "Has no volume",
+                        "Takes the shape of its container",
+                        "Always has a fixed shape",
+                        "Has no mass"
+                    ],
+                    correct:1
+                },
+                {
+                    question:"Which state has no fixed shape or volume?",
+                    answers:["Solid","Liquid","Gas","Crystal"],
+                    correct:2
+                },
+                {
+                    question:"Which is matter?",
+                    answers:["Air","An idea","A number","A thought"],
+                    correct:0
+                }
+            ]
+        },
+
+        {
+            title:"Atoms and Elements",
+            description:"Discover atoms, elements and the periodic table.",
+            objectives:[
+                "Understand the basic idea of an atom.",
+                "Define an element.",
+                "Recognize symbols of common elements."
+            ],
+            lessonTitle:"Atoms and Elements",
+            lesson:`
+                <h2>Atoms</h2>
+
+                <p>
+                An atom is a basic unit of an element that retains
+                the chemical identity of that element.
+                </p>
+
+                <h2>Elements</h2>
+
+                <p>
+                An element is a pure substance made up of atoms
+                with the same atomic number.
+                </p>
+
+                <div class="lesson-note">
+                Examples of elements include hydrogen, oxygen,
+                carbon and iron.
+                </div>
+            `,
+            quiz:[
+                {
+                    question:"An element is made up of:",
+                    answers:["Atoms of the same element","Only molecules of water","Only gases","Only liquids"],
+                    correct:0
+                },
+                {
+                    question:"Which is an element?",
+                    answers:["Oxygen","Water","Salt solution","Air mixture"],
+                    correct:0
+                },
+                {
+                    question:"The basic unit of an element is an:",
+                    answers:["Atom","Organ","Cell","Organism"],
+                    correct:0
+                },
+                {
+                    question:"Which is the symbol for oxygen?",
+                    answers:["O","Ox","Og","Oy"],
+                    correct:0
+                },
+                {
+                    question:"Iron is:",
+                    answers:["An element","A mixture","A solution","A gas only"],
+                    correct:0
+                }
+            ]
+        }
+    ]
+},
+
+
+biology:{
+    name:"Biology",
+    icon:"🧬",
+    topics:[
+        {
+            title:"Cells",
+            description:"Learn about cells and their basic structures.",
+            objectives:[
+                "Define a cell.",
+                "Identify basic cell structures.",
+                "Understand why cells are important."
+            ],
+            lessonTitle:"Introduction to Cells",
+            lesson:`
+                <h2>What is a cell?</h2>
+
+                <p>
+                A cell is the basic structural and functional unit
+                of living organisms.
+                </p>
+
+                <h2>Cell Structures</h2>
+
+                <p>
+                Cells contain structures that perform different functions.
+                </p>
+
+                <div class="lesson-example">
+                <strong>Nucleus:</strong> contains genetic material
+                and helps control cell activities.
+                <br><br>
+                <strong>Cell membrane:</strong> controls movement of
+                substances into and out of the cell.
+                </div>
+
+                <h2>Plant and Animal Cells</h2>
+
+                <p>
+                Plant cells have structures such as a cell wall
+                and chloroplasts that are not found in typical animal cells.
+                </p>
+            `,
+            quiz:[
+                {
+                    question:"The basic unit of life is the:",
+                    answers:["Cell","Atom","Organ","Tissue"],
+                    correct:0
+                },
+                {
+                    question:"Which structure controls many cell activities?",
+                    answers:["Nucleus","Cell wall","Vacuole only","Rib"],
+                    correct:0
+                },
+                {
+                    question:"Which structure controls movement into and out of a cell?",
+                    answers:["Cell membrane","Nucleus","Chloroplast","Bone"],
+                    correct:0
+                },
+                {
+                    question:"Which structure is characteristic of plant cells?",
+                    answers:["Cell wall","Nucleus","Cell membrane","Cytoplasm"],
+                    correct:0
+                },
+                {
+                    question:"Cells are important because they:",
+                    answers:[
+                        "Make up living organisms",
+                        "Only make rocks",
+                        "Only produce light",
+                        "Have no function"
+                    ],
+                    correct:0
+                }
+            ]
+        },
+
+        {
+            title:"Human Body Systems",
+            description:"Explore major systems of the human body.",
+            objectives:[
+                "Identify major body systems.",
+                "Understand basic system functions.",
+                "Explain why body systems work together."
+            ],
+            lessonTitle:"Human Body Systems",
+            lesson:`
+                <h2>Body Systems</h2>
+
+                <p>
+                The human body contains several organ systems.
+                Each system performs important functions.
+                </p>
+
+                <div class="lesson-example">
+                <strong>Digestive system:</strong>
+                helps break down food and absorb nutrients.
+                <br><br>
+                <strong>Respiratory system:</strong>
+                involved in gas exchange.
+                <br><br>
+                <strong>Circulatory system:</strong>
+                transports substances around the body.
+                </div>
+
+                <p>
+                These systems work together to keep the body functioning.
+                </p>
+            `,
+            quiz:[
+                {
+                    question:"Which system helps break down food?",
+                    answers:["Digestive system","Respiratory system","Skeletal system","Nervous system"],
+                    correct:0
+                },
+                {
+                    question:"Which system is involved in gas exchange?",
+                    answers:["Respiratory","Digestive","Skeletal","Muscular"],
+                    correct:0
+                },
+                {
+                    question:"Which system transports substances around the body?",
+                    answers:["Circulatory","Digestive","Skeletal","Integumentary"],
+                    correct:0
+                },
+                {
+                    question:"Body systems:",
+                    answers:[
+                        "Work independently only",
+                        "Can work together",
+                        "Never interact",
+                        "Have no functions"
+                    ],
+                    correct:1
+                },
+                {
+                    question:"The human body contains:",
+                    answers:["Organ systems","Only one organ","No cells","Only bones"],
+                    correct:0
+                }
+            ]
+        }
+    ]
+},
+
+
+english:{
+    name:"English Language",
+    icon:"📖",
+    topics:[
+        {
+            title:"Reading Comprehension",
+            description:"Build skills for understanding written passages.",
+            objectives:[
+                "Identify main ideas.",
+                "Find supporting details.",
+                "Make reasonable conclusions."
+            ],
+            lessonTitle:"Reading Comprehension",
+            lesson:`
+                <h2>What is comprehension?</h2>
+
+                <p>
+                Reading comprehension is the ability to understand,
+                interpret and respond to information in a written text.
+                </p>
+
+                <h2>Main Idea</h2>
+
+                <p>
+                The main idea is the central point or message
+                the writer wants the reader to understand.
+                </p>
+
+                <div class="lesson-note">
+                <strong>Tip:</strong>
+                When reading a passage, ask:
+                “What is this passage mainly about?”
+                </div>
+
+                <h2>Supporting Details</h2>
+
+                <p>
+                Supporting details provide information that explains
+                or develops the main idea.
+                </p>
+            `,
+            quiz:[
+                {
+                    question:"What is the main idea?",
+                    answers:[
+                        "The central point of a text",
+                        "The longest sentence",
+                        "The title only",
+                        "A random detail"
+                    ],
+                    correct:0
+                },
+                {
+                    question:"Supporting details:",
+                    answers:[
+                        "Develop the main idea",
+                        "Always contradict the text",
+                        "Are never important",
+                        "Only contain numbers"
+                    ],
+                    correct:0
+                },
+                {
+                    question:"Good comprehension means:",
+                    answers:[
+                        "Understanding a text",
+                        "Reading without thinking",
+                        "Skipping every paragraph",
+                        "Only reading the title"
+                    ],
+                    correct:0
+                },
+                {
+                    question:"A reader should ask what a passage is mainly about to find the:",
+                    answers:["Main idea","Font","Page number","Author's age"],
+                    correct:0
+                },
+                {
+                    question:"A conclusion should be based on:",
+                    answers:["Evidence from the text","A random guess","The page colour","The font"],
+                    correct:0
+                }
+            ]
+        }
+    ]
+},
+
+
+ict:{
+    name:"ICT",
+    icon:"💻",
+    topics:[
+        {
+            title:"Computer Fundamentals",
+            description:"Understand computers, hardware and software.",
+            objectives:[
+                "Define a computer.",
+                "Distinguish hardware from software.",
+                "Identify common computer components."
+            ],
+            lessonTitle:"Computer Fundamentals",
+            lesson:`
+                <h2>What is a computer?</h2>
+
+                <p>
+                A computer is an electronic device that accepts data,
+                processes it, stores it and produces information.
+                </p>
+
+                <h2>Hardware</h2>
+
+                <p>
+                Hardware refers to the physical parts of a computer
+                that can be seen and touched.
+                </p>
+
+                <div class="lesson-example">
+                Examples include a keyboard, mouse, monitor,
+                processor and storage devices.
+                </div>
+
+                <h2>Software</h2>
+
+                <p>
+                Software consists of programs and instructions
+                that tell computer hardware what to do.
+                </p>
+            `,
+            quiz:[
+                {
+                    question:"A computer processes:",
+                    answers:["Data","Only water","Only paper","Only sound"],
+                    correct:0
+                },
+                {
+                    question:"Hardware refers to:",
+                    answers:["Physical computer components","Programs only","Internet accounts","Passwords"],
+                    correct:0
+                },
+                {
+                    question:"Which is hardware?",
+                    answers:["Keyboard","Operating system","Web browser","App"],
+                    correct:0
+                },
+                {
+                    question:"Software consists mainly of:",
+                    answers:["Programs and instructions","Plastic parts","Cables only","Screens only"],
+                    correct:0
+                },
+                {
+                    question:"Which is an input device?",
+                    answers:["Keyboard","Monitor","Speaker","Printer"],
+                    correct:0
+                }
+            ]
+        }
+    ]
+}
+
+};
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let state = JSON.parse(
+    localStorage.getItem("eduvoraState")
+) || {
+
+    xp:0,
+
+    quizzes:0,
+
+    lessons:0,
+
+    streak:1,
+
+    completedTopics:{},
+
+    selectedLevel:"SHS / SHTS"
+
+};
+
+
+let currentSubject = null;
+
+let currentTopicIndex = 0;
+
+let currentQuiz = [];
+
+let currentQuestion = 0;
+
+let currentScore = 0;
+
+let currentAnswered = false;
+
+
+/* =========================================================
+   SAVE STATE
+========================================================= */
+
+function saveState(){
+
+    localStorage.setItem(
+        "eduvoraState",
+        JSON.stringify(state)
+    );
+
+}
+
+
+/* =========================================================
+   XP / LEVEL
+========================================================= */
+
+function getLevel(xp){
+
+    if(xp >= 1000){
+
+        return {
+            level:5,
+            rank:"Science Master",
+            next:null,
+            current:1000
+        };
+
+    }
+
+    if(xp >= 500){
+
+        return {
+            level:4,
+            rank:"Science Expert",
+            next:1000,
+            current:500
+        };
+
+    }
+
+    if(xp >= 200){
+
+        return {
+            level:3,
+            rank:"Science Explorer",
+            next:500,
+            current:200
+        };
+
+    }
+
+    return {
+        level:1,
+        rank:"Science Beginner",
+        next:200,
+        current:0
+    };
+
+}
+
+
+function updateUI(){
+
+    const level=getLevel(state.xp);
+
+    document.getElementById("xpValue").textContent=state.xp;
+
+    document.getElementById("quizValue").textContent=state.quizzes;
+
+    document.getElementById("lessonValue").textContent=state.lessons;
+
+    document.getElementById("streakValue").textContent=
+        state.streak + (state.streak===1 ? " day":" days");
+
+
+    document.getElementById("levelValue").textContent=
+        "Level " + level.level;
+
+    document.getElementById("rankValue").textContent=
+        level.rank;
+
+    document.getElementById("dashboardRank").textContent=
+        level.rank;
+
+
+    if(level.next){
+
+        const progress=
+            ((state.xp-level.current)/
+            (level.next-level.current))*100;
+
+        document.getElementById("levelProgress").style.width=
+            Math.max(0,Math.min(100,progress))+"%";
+
+        document.getElementById("levelText").textContent=
+            (level.next-state.xp) +
+            " XP until Level " +
+            (level.level+1);
+
+        document.getElementById("previewPercent").textContent=
+            Math.round(progress)+"%";
+
+        document.getElementById("previewBar").style.width=
+            Math.max(0,Math.min(100,progress))+"%";
+
+    }else{
+
+        document.getElementById("levelProgress").style.width="100%";
+
+        document.getElementById("levelText").textContent=
+            "Maximum level reached";
+
+        document.getElementById("previewPercent").textContent="100%";
+
+        document.getElementById("previewBar").style.width="100%";
+
+    }
+
+
+    document.getElementById("previewXP").textContent=state.xp;
+
+    document.getElementById("previewLevel").textContent=
+        level.level;
+
+    document.getElementById("previewRank").textContent=
+        level.rank;
+
+
+    document.getElementById("progressXP").textContent=
+        state.xp+" XP";
+
+    document.getElementById("progressLessons").textContent=
+        state.lessons;
+
+    document.getElementById("progressQuizzes").textContent=
+        state.quizzes;
+
+
+    updateTopicProgress();
+
+}
+
+
+function addXP(amount){
+
+    const oldLevel=getLevel(state.xp).level;
+
+    state.xp+=amount;
+
+    const newLevel=getLevel(state.xp).level;
+
+    saveState();
+
+    updateUI();
+
+    showToast("⭐ +"+amount+" XP earned!");
+
+    if(newLevel>oldLevel){
+
+        setTimeout(()=>{
+
+            alert(
+                "🎉 Level Up!\n\n"+
+                "You reached Level "+newLevel+"!"
+            );
+
+        },400);
+
+    }
+
+}
+
+
+/* =========================================================
+   LANDING
+========================================================= */
 
 function openLevelModal(){
 
@@ -1682,6 +4148,7 @@ function openLevelModal(){
 
 }
 
+
 function closeLevelModal(){
 
     document
@@ -1690,7 +4157,12 @@ function closeLevelModal(){
 
 }
 
+
 function enterDashboard(level){
+
+    state.selectedLevel=level;
+
+    saveState();
 
     closeLevelModal();
 
@@ -1698,101 +4170,27 @@ function enterDashboard(level){
 
     document.getElementById("dashboard").style.display="block";
 
+    showDashboard();
+
     window.scrollTo(0,0);
 
-    console.log("Selected level:",level);
+    showToast(
+        "Welcome to Eduvora — "+level
+    );
 
 }
 
-
-/* ===============================
-   LOGIN
-================================ */
 
 function openLogin(){
 
     alert(
-        "Student accounts will be connected soon.\n\n" +
-        "The next development stage will add real registration and login."
+        "Student accounts are coming next.\n\n"+
+        "For now, your learning progress is saved "+
+        "on this device."
     );
 
 }
 
-
-/* ===============================
-   LESSON
-================================ */
-
-function startLesson(){
-
-    alert(
-        "Physics lesson selected.\n\n" +
-        "The real lesson system will be connected next."
-    );
-
-}
-
-
-/* ===============================
-   QUIZ
-================================ */
-
-function startQuiz(){
-
-    alert(
-        "Quiz Arena selected!\n\n" +
-        "The real quiz engine will be built next."
-    );
-
-}
-
-
-/* ===============================
-   SUBJECT
-================================ */
-
-function subjectMessage(subject){
-
-    alert(
-        subject +
-        " learning center selected.\n\n" +
-        "Lessons, topics and quizzes will be connected next."
-    );
-
-}
-
-
-/* ===============================
-   AI
-================================ */
-
-function showAI(){
-
-    alert(
-        "AI Study Coach\n\n" +
-        "This will become your personalized learning assistant."
-    );
-
-}
-
-
-/* ===============================
-   PREMIUM
-================================ */
-
-function showPremium(){
-
-    alert(
-        "Eduvora Premium\n\n" +
-        "Premium subscriptions will be connected after student accounts and the learning system are ready."
-    );
-
-}
-
-
-/* ===============================
-   FEATURES
-================================ */
 
 function showFeatures(){
 
@@ -1805,21 +4203,725 @@ function showFeatures(){
 }
 
 
-/* ===============================
-   MODAL OUTSIDE CLICK
-================================ */
+function showPremium(){
 
-window.addEventListener("click",function(event){
+    alert(
+        "Eduvora Premium\n\n"+
+        "Premium will unlock advanced quizzes, "+
+        "AI Study Coach, analytics and other features.\n\n"+
+        "Payments will be connected later."
+    );
 
-    const modal=document.getElementById("levelModal");
+}
 
-    if(event.target===modal){
 
-        closeLevelModal();
+/* =========================================================
+   PAGE MANAGEMENT
+========================================================= */
+
+const pageIds=[
+
+    "dashboardPage",
+    "subjectsPage",
+    "topicsPage",
+    "lessonPage",
+    "quizPage",
+    "resultPage",
+    "progressPage",
+    "achievementsPage",
+    "toolsPage",
+    "opportunitiesPage",
+    "aiPage"
+
+];
+
+
+function hideAllPages(){
+
+    pageIds.forEach(id=>{
+
+        document
+        .getElementById(id)
+        .classList.remove("active");
+
+    });
+
+}
+
+
+function showPage(id){
+
+    hideAllPages();
+
+    document
+    .getElementById(id)
+    .classList.add("active");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+function showDashboard(){
+
+    showPage("dashboardPage");
+
+    updateUI();
+
+}
+
+
+function showSubjects(){
+
+    showPage("subjectsPage");
+
+}
+
+
+function showProgress(){
+
+    showPage("progressPage");
+
+    updateUI();
+
+}
+
+
+function showAchievements(){
+
+    showPage("achievementsPage");
+
+}
+
+
+function showStudyTools(){
+
+    showPage("toolsPage");
+
+}
+
+
+function showOpportunities(){
+
+    showPage("opportunitiesPage");
+
+}
+
+
+function showAI(){
+
+    showPage("aiPage");
+
+}
+
+
+function showProfileMessage(){
+
+    alert(
+        "Student Profile\n\n"+
+        "Real accounts and profile settings will "+
+        "be connected with Supabase in the next stage."
+    );
+
+}
+
+
+/* =========================================================
+   SUBJECTS
+========================================================= */
+
+function showSubjectTopics(subjectKey){
+
+    const subject=subjects[subjectKey];
+
+    if(!subject){
+
+        showToast("Subject not available yet.");
+
+        return;
 
     }
 
-});
+    currentSubject=subjectKey;
+
+    document.getElementById("topicsTitle").textContent=
+        subject.icon+" "+subject.name;
+
+    document.getElementById("topicsSubtitle").textContent=
+        "Choose a topic to begin learning.";
+
+    const grid=
+        document.getElementById("topicGrid");
+
+    grid.innerHTML="";
+
+
+    subject.topics.forEach((topic,index)=>{
+
+        const key=subjectKey+"_"+index;
+
+        const completed=
+            !!state.completedTopics[key];
+
+        const card=document.createElement("div");
+
+        card.className="topic-card";
+
+        card.onclick=()=>openTopic(
+            subjectKey,
+            index
+        );
+
+        card.innerHTML=`
+
+            <div class="topic-number">
+                ${index+1}
+            </div>
+
+            <h3>
+                ${topic.title}
+            </h3>
+
+            <p>
+                ${topic.description}
+            </p>
+
+            <div class="topic-status">
+                ${completed ? "✓ Completed" : "Start Learning →"}
+            </div>
+        `;
+
+        grid.appendChild(card);
+
+    });
+
+
+    showPage("topicsPage");
+
+}
+
+
+/* =========================================================
+   TOPIC / LESSON
+========================================================= */
+
+function openTopic(subjectKey,index){
+
+    const subject=subjects[subjectKey];
+
+    if(!subject || !subject.topics[index]){
+
+        return;
+
+    }
+
+    currentSubject=subjectKey;
+
+    currentTopicIndex=index;
+
+    const topic=subject.topics[index];
+
+    document.getElementById("lessonSubject").textContent=
+        subject.name;
+
+    document.getElementById("lessonTitle").textContent=
+        topic.lessonTitle;
+
+    document.getElementById("lessonBreadcrumb").textContent=
+        subject.name+" • "+topic.title;
+
+    document.getElementById("lessonBody").innerHTML=
+        topic.lesson;
+
+    const objectiveList=
+        document.getElementById("lessonObjectives");
+
+    objectiveList.innerHTML="";
+
+    topic.objectives.forEach(objective=>{
+
+        const li=document.createElement("li");
+
+        li.textContent=objective;
+
+        objectiveList.appendChild(li);
+
+    });
+
+
+    const key=
+        subjectKey+"_"+index;
+
+    const completed=
+        !!state.completedTopics[key];
+
+    document.getElementById("lessonProgressBar").style.width=
+        completed ? "100%" : "0%";
+
+    document.getElementById("lessonProgressText").textContent=
+        completed ? "100% complete" : "0% complete";
+
+
+    showPage("lessonPage");
+
+}
+
+
+/* =========================================================
+   COMPLETE LESSON
+========================================================= */
+
+function completeLesson(){
+
+    if(!currentSubject){
+
+        return;
+
+    }
+
+    const key=
+        currentSubject+"_"+currentTopicIndex;
+
+    if(state.completedTopics[key]){
+
+        showToast("Lesson already completed.");
+
+        return;
+
+    }
+
+
+    state.completedTopics[key]=true;
+
+    state.lessons++;
+
+    saveState();
+
+    updateUI();
+
+    document.getElementById("lessonProgressBar").style.width=
+        "100%";
+
+    document.getElementById("lessonProgressText").textContent=
+        "100% complete";
+
+
+    addXP(25);
+
+    showToast(
+        "✓ Lesson complete!"
+    );
+
+}
+
+
+/* =========================================================
+   QUIZ
+========================================================= */
+
+function startCurrentQuiz(){
+
+    if(!currentSubject){
+
+        return;
+
+    }
+
+    const subject=subjects[currentSubject];
+
+    const topic=subject.topics[currentTopicIndex];
+
+    if(!topic.quiz || topic.quiz.length===0){
+
+        showToast("Quiz coming soon.");
+
+        return;
+
+    }
+
+    currentQuiz=topic.quiz;
+
+    currentQuestion=0;
+
+    currentScore=0;
+
+    currentAnswered=false;
+
+
+    document.getElementById("quizSubjectTitle").textContent=
+        subject.name+" • "+topic.title;
+
+    showPage("quizPage");
+
+    renderQuestion();
+
+}
+
+
+function startQuizFromDashboard(){
+
+    currentSubject="physics";
+
+    currentTopicIndex=0;
+
+    startCurrentQuiz();
+
+}
+
+
+function renderQuestion(){
+
+    const question=
+        currentQuiz[currentQuestion];
+
+    currentAnswered=false;
+
+
+    document.getElementById("questionCounter").textContent=
+        "Question "+
+        (currentQuestion+1)+
+        " of "+
+        currentQuiz.length;
+
+
+    document.getElementById("quizScoreText").textContent=
+        "Score: "+currentScore;
+
+
+    document.getElementById("quizProgressBar").style.width=
+        ((currentQuestion+1)/currentQuiz.length*100)+"%";
+
+
+    document.getElementById("questionText").textContent=
+        question.question;
+
+
+    const answerList=
+        document.getElementById("answerList");
+
+    answerList.innerHTML="";
+
+
+    document.getElementById("quizFeedback").className=
+        "quiz-feedback";
+
+
+    document.getElementById("quizFeedback").textContent="";
+
+
+    document.getElementById("nextQuestionButton").style.display=
+        "none";
+
+
+    question.answers.forEach((answer,index)=>{
+
+        const button=document.createElement("button");
+
+        button.className="answer";
+
+        button.textContent=
+            String.fromCharCode(65+index)+". "+answer;
+
+        button.onclick=()=>selectAnswer(index,button);
+
+        answerList.appendChild(button);
+
+    });
+
+}
+
+
+function selectAnswer(index,button){
+
+    if(currentAnswered){
+
+        return;
+
+    }
+
+    currentAnswered=true;
+
+    const question=
+        currentQuiz[currentQuestion];
+
+    const buttons=
+        document.querySelectorAll(".answer");
+
+    buttons.forEach((btn,i)=>{
+
+        btn.disabled=true;
+
+        if(i===question.correct){
+
+            btn.classList.add("correct");
+
+        }
+
+    });
+
+
+    const feedback=
+        document.getElementById("quizFeedback");
+
+
+    if(index===question.correct){
+
+        currentScore++;
+
+        button.classList.add("correct");
+
+        feedback.className=
+            "quiz-feedback show correct";
+
+        feedback.textContent=
+            "✓ Correct! Great work.";
+
+    }else{
+
+        button.classList.add("wrong");
+
+        feedback.className=
+            "quiz-feedback show wrong";
+
+        feedback.textContent=
+            "✗ Not quite. The correct answer is: "+
+            question.answers[question.correct];
+
+    }
+
+
+    document.getElementById("quizScoreText").textContent=
+        "Score: "+currentScore;
+
+
+    const nextButton=
+        document.getElementById("nextQuestionButton");
+
+    nextButton.style.display="inline-block";
+
+    nextButton.textContent=
+        currentQuestion===
+        currentQuiz.length-1
+        ? "See Results →"
+        : "Next Question →";
+
+}
+
+
+function nextQuestion(){
+
+    if(!currentAnswered){
+
+        return;
+
+    }
+
+    if(currentQuestion<
+        currentQuiz.length-1){
+
+        currentQuestion++;
+
+        renderQuestion();
+
+    }else{
+
+        finishQuiz();
+
+    }
+
+}
+
+
+/* =========================================================
+   QUIZ RESULT
+========================================================= */
+
+function finishQuiz(){
+
+    state.quizzes++;
+
+    const percentage=
+        Math.round(
+            currentScore/
+            currentQuiz.length*100
+        );
+
+
+    let earned=0;
+
+    if(percentage>=80){
+
+        earned=60;
+
+    }else if(percentage>=60){
+
+        earned=45;
+
+    }else if(percentage>=40){
+
+        earned=30;
+
+    }else{
+
+        earned=20;
+
+    }
+
+
+    addXP(earned);
+
+    saveState();
+
+    updateUI();
+
+
+    document.getElementById("finalScore").textContent=
+        currentScore+"/"+currentQuiz.length;
+
+
+    document.getElementById("earnedXP").textContent=
+        earned;
+
+
+    let message="Keep practicing — you're improving!";
+
+    if(percentage===100){
+
+        message=
+            "Perfect score! Outstanding work! 🏆";
+
+    }else if(percentage>=80){
+
+        message=
+            "Excellent work! Keep going! 🔥";
+
+    }else if(percentage>=60){
+
+        message=
+            "Good job! A little more practice will make you even stronger.";
+
+    }
+
+
+    document.getElementById("finalMessage").textContent=
+        message;
+
+
+    showPage("resultPage");
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function backToTopics(){
+
+    if(currentSubject){
+
+        showSubjectTopics(currentSubject);
+
+    }else{
+
+        showSubjects();
+
+    }
+
+}
+
+
+/* =========================================================
+   PHYSICS PROGRESS
+========================================================= */
+
+function updateTopicProgress(){
+
+    const total=
+        subjects.physics.topics.length;
+
+    let completed=0;
+
+    subjects.physics.topics.forEach((topic,index)=>{
+
+        if(state.completedTopics["physics_"+index]){
+
+            completed++;
+
+        }
+
+    });
+
+    const percentage=
+        total===0 ? 0 : completed/total*100;
+
+    const bar=
+        document.getElementById("physicsProgress");
+
+    if(bar){
+
+        bar.style.width=percentage+"%";
+
+    }
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+function showToast(message){
+
+    const toast=
+        document.getElementById("toast");
+
+    toast.textContent=message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer=setTimeout(()=>{
+
+        toast.classList.remove("show");
+
+    },2500);
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL OUTSIDE CLICK
+========================================================= */
+
+window.addEventListener(
+    "click",
+    function(event){
+
+        const modal=
+            document.getElementById("levelModal");
+
+        if(event.target===modal){
+
+            closeLevelModal();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+updateUI();
 
 </script>
 
